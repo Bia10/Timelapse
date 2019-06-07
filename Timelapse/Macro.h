@@ -188,7 +188,7 @@ ref class Macro {
 				if (MacrosEnabled::bMacroLoot && HelperFuncs::ValidToLoot()) {
 					if (String::IsNullOrWhiteSpace(Timelapse::MainForm::TheInstance->tbLootItem->Text)) break;
 					const int itemCntLootLimit = Convert::ToUInt32(Timelapse::MainForm::TheInstance->tbLootItem->Text);
-					const int itemCntCurrent = ReadPointer(DropPoolBase, OFS_ItemCount);
+					const int itemCntCurrent = ReadPointer(DropPoolBase, OFS_mDropPoint_uCount);
 
 					if (itemCntCurrent > itemCntLootLimit) {
 						if (DBG_Macro) Log::WriteLineToConsole("Pushing macro to queue: " + MacroTypeToStr(keyMacro->macroType));
@@ -200,7 +200,7 @@ ref class Macro {
 				if (MacrosEnabled::bMacroAttack && HelperFuncs::ValidToAttack()) {
 					if (String::IsNullOrWhiteSpace(Timelapse::MainForm::TheInstance->tbAttackMob->Text)) break;
 					const int mobCntAttackLimit = Convert::ToUInt32(Timelapse::MainForm::TheInstance->tbAttackMob->Text);
-					const int mobCntCurrent = ReadPointer(MobPoolBase, OFS_MobCount);
+					const int mobCntCurrent = ReadPointer(MobPoolBase, OFS_mMob_uCount);
 
 					if (mobCntCurrent > mobCntAttackLimit) {
 						if (DBG_Macro) Log::WriteLineToConsole("Pushing macro to queue: " + MacroTypeToStr(keyMacro->macroType));

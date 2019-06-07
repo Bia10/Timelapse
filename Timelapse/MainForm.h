@@ -162,18 +162,6 @@ namespace Timelapse {
 	private: System::Windows::Forms::Label^  label61;
 	private: System::Windows::Forms::ToolStripMenuItem^  openSettingsToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  saveSettingsToolStripMenuItem;
-	private: System::Windows::Forms::Panel^  panel21;
-	private: System::Windows::Forms::CheckBox^  cbMobFilterLog;
-	private: System::Windows::Forms::Button^  bMobSearchLogClear;
-	private: System::Windows::Forms::RadioButton^  rbMobFilterWhiteList;
-	private: System::Windows::Forms::TextBox^  tbMobFilterSearch;
-	private: System::Windows::Forms::RadioButton^  rbMobFilterBlackList;
-	private: System::Windows::Forms::Label^  label75;
-	private: System::Windows::Forms::Button^  bMobFilterAdd;
-	private: System::Windows::Forms::TextBox^  tbMobFilterID;
-	private: System::Windows::Forms::Label^  label76;
-	private: System::Windows::Forms::Button^  bMobFilter;
-	private: System::Windows::Forms::Panel^  panel20;
 	private: System::Windows::Forms::CheckBox^  cbItemFilterLog;
 	private: System::Windows::Forms::Button^  bItemSearchLogClear;
 	private: System::Windows::Forms::TextBox^  tbItemFilterSearch;
@@ -281,7 +269,7 @@ namespace Timelapse {
 	public: System::Windows::Forms::ListView^  lvTeleport;
 	private: System::Windows::Forms::ColumnHeader^  columnHeader1;
 	private: System::Windows::Forms::ColumnHeader^  columnHeader2;
-	private: System::Windows::Forms::Panel^  panel18;
+
 	private: System::Windows::Forms::Button^  bTeleportGetCurrentLocation;
 	private: System::Windows::Forms::Label^  label64;
 	public: System::Windows::Forms::TextBox^  tbTeleportX;
@@ -382,8 +370,6 @@ namespace Timelapse {
 	private: System::Windows::Forms::Button^  bSendRevive;
 	private: System::Windows::Forms::Button^  bSendRestore127Health;
 	public: System::Windows::Forms::Button^  bTestButton;
-	public: System::Windows::Forms::ListBox^  lbMobSearchLog;
-	public: System::Windows::Forms::ListBox^  lbMobFilter;
 	public: System::Windows::Forms::ListBox^  lbItemSearchLog;
 	public: System::Windows::Forms::ListBox^  lbItemFilter;
 	public: System::Windows::Forms::TreeView^  tvMapRusherSearch;
@@ -394,7 +380,6 @@ namespace Timelapse {
 	public: System::Windows::Forms::TextBox^  tbMapRusherDelay;
 	private: System::Windows::Forms::Label^  label66;
 	private: System::Windows::Forms::CheckBox^  cbZzVac;
-	private: System::Windows::Forms::Label^  label77;
 	private: System::Windows::Forms::GroupBox^  groupBox2;
 	private: System::Windows::Forms::GroupBox^  groupBox1;
 	private: System::Windows::Forms::GroupBox^  groupBox5;
@@ -445,6 +430,39 @@ namespace Timelapse {
 	private: System::Windows::Forms::Label^  label93;
 	private: System::Windows::Forms::Label^  label91;
 	private: System::Windows::Forms::TextBox^  comboInUseSlot;
+private: System::Windows::Forms::TabControl^  tabControl4;
+private: System::Windows::Forms::TabPage^  tabPage13;
+private: System::Windows::Forms::TabPage^  tabPage14;
+private: System::Windows::Forms::Button^  bMobFilter;
+private: System::Windows::Forms::Button^  bMobSearchLogClear;
+public: System::Windows::Forms::ListBox^  lbMobSearchLog;
+private: System::Windows::Forms::TextBox^  tbMobFilterSearch;
+private: System::Windows::Forms::Label^  label75;
+private: System::Windows::Forms::CheckBox^  cbMobFilterLog;
+public: System::Windows::Forms::ListBox^  lbMobFilter;
+private: System::Windows::Forms::Label^  label77;
+private: System::Windows::Forms::Button^  bMobFilterAdd;
+private: System::Windows::Forms::RadioButton^  rbMobFilterWhiteList;
+private: System::Windows::Forms::TextBox^  tbMobFilterID;
+private: System::Windows::Forms::RadioButton^  rbMobFilterBlackList;
+private: System::Windows::Forms::Label^  label76;
+private: System::Windows::Forms::Label^  labelLUK;
+private: System::Windows::Forms::Label^  labelINT;
+private: System::Windows::Forms::Label^  labelDEX;
+private: System::Windows::Forms::Label^  labelSTR;
+private: System::Windows::Forms::Label^  labelAP;
+private: System::Windows::Forms::Label^  lbLUK;
+private: System::Windows::Forms::Label^  lbINT;
+private: System::Windows::Forms::Label^  lbDEX;
+private: System::Windows::Forms::Label^  lbSTR;
+private: System::Windows::Forms::Label^  lbSP;
+private: System::Windows::Forms::Label^  lbAP;
+private: System::Windows::Forms::Label^  labelSP;
+private: System::Windows::Forms::Timer^  AutoAPTimer;
+private: System::Windows::Forms::Label^  lbMouseAnim;
+private: System::Windows::Forms::Label^  labelMouseAnim;
+private: System::Windows::Forms::Label^  lbMousePosAbs;
+private: System::Windows::Forms::Label^  label95;
 	private: System::ComponentModel::IContainer^  components;
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -473,6 +491,20 @@ namespace Timelapse {
 			this->label21 = (gcnew System::Windows::Forms::Label());
 			this->btnMinimize = (gcnew System::Windows::Forms::Button());
 			this->pnlMiddle = (gcnew System::Windows::Forms::Panel());
+			this->lbMouseAnim = (gcnew System::Windows::Forms::Label());
+			this->labelMouseAnim = (gcnew System::Windows::Forms::Label());
+			this->lbLUK = (gcnew System::Windows::Forms::Label());
+			this->lbINT = (gcnew System::Windows::Forms::Label());
+			this->lbDEX = (gcnew System::Windows::Forms::Label());
+			this->lbSTR = (gcnew System::Windows::Forms::Label());
+			this->lbSP = (gcnew System::Windows::Forms::Label());
+			this->lbAP = (gcnew System::Windows::Forms::Label());
+			this->labelSP = (gcnew System::Windows::Forms::Label());
+			this->labelLUK = (gcnew System::Windows::Forms::Label());
+			this->labelINT = (gcnew System::Windows::Forms::Label());
+			this->labelDEX = (gcnew System::Windows::Forms::Label());
+			this->labelSTR = (gcnew System::Windows::Forms::Label());
+			this->labelAP = (gcnew System::Windows::Forms::Label());
 			this->lbCharFoothold = (gcnew System::Windows::Forms::Label());
 			this->label96 = (gcnew System::Windows::Forms::Label());
 			this->lbCharAnimation = (gcnew System::Windows::Forms::Label());
@@ -702,7 +734,6 @@ namespace Timelapse {
 			this->lvTeleport = (gcnew System::Windows::Forms::ListView());
 			this->columnHeader1 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader2 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->panel18 = (gcnew System::Windows::Forms::Panel());
 			this->bTeleportGetCurrentLocation = (gcnew System::Windows::Forms::Button());
 			this->label64 = (gcnew System::Windows::Forms::Label());
 			this->tbTeleportX = (gcnew System::Windows::Forms::TextBox());
@@ -768,38 +799,40 @@ namespace Timelapse {
 			this->label54 = (gcnew System::Windows::Forms::Label());
 			this->cbKami = (gcnew System::Windows::Forms::CheckBox());
 			this->tabPage7 = (gcnew System::Windows::Forms::TabPage());
-			this->panel21 = (gcnew System::Windows::Forms::Panel());
-			this->lbMobSearchLog = (gcnew System::Windows::Forms::ListBox());
-			this->lbMobFilter = (gcnew System::Windows::Forms::ListBox());
-			this->cbMobFilterLog = (gcnew System::Windows::Forms::CheckBox());
-			this->bMobSearchLogClear = (gcnew System::Windows::Forms::Button());
-			this->rbMobFilterWhiteList = (gcnew System::Windows::Forms::RadioButton());
-			this->tbMobFilterSearch = (gcnew System::Windows::Forms::TextBox());
-			this->rbMobFilterBlackList = (gcnew System::Windows::Forms::RadioButton());
-			this->label75 = (gcnew System::Windows::Forms::Label());
-			this->bMobFilterAdd = (gcnew System::Windows::Forms::Button());
-			this->tbMobFilterID = (gcnew System::Windows::Forms::TextBox());
-			this->label76 = (gcnew System::Windows::Forms::Label());
-			this->label77 = (gcnew System::Windows::Forms::Label());
-			this->bMobFilter = (gcnew System::Windows::Forms::Button());
-			this->panel20 = (gcnew System::Windows::Forms::Panel());
-			this->lbItemSearchLog = (gcnew System::Windows::Forms::ListBox());
-			this->lbItemFilter = (gcnew System::Windows::Forms::ListBox());
-			this->cbItemFilterLog = (gcnew System::Windows::Forms::CheckBox());
+			this->tabControl4 = (gcnew System::Windows::Forms::TabControl());
+			this->tabPage13 = (gcnew System::Windows::Forms::TabPage());
+			this->bItemFilter = (gcnew System::Windows::Forms::Button());
 			this->bItemSearchLogClear = (gcnew System::Windows::Forms::Button());
+			this->lbItemSearchLog = (gcnew System::Windows::Forms::ListBox());
 			this->tbItemFilterSearch = (gcnew System::Windows::Forms::TextBox());
+			this->lbItemFilter = (gcnew System::Windows::Forms::ListBox());
 			this->label74 = (gcnew System::Windows::Forms::Label());
-			this->bItemFilterAdd = (gcnew System::Windows::Forms::Button());
-			this->tbItemFilterID = (gcnew System::Windows::Forms::TextBox());
-			this->label73 = (gcnew System::Windows::Forms::Label());
+			this->cbItemFilterLog = (gcnew System::Windows::Forms::CheckBox());
 			this->tbItemFilterMesos = (gcnew System::Windows::Forms::TextBox());
+			this->label73 = (gcnew System::Windows::Forms::Label());
 			this->label70 = (gcnew System::Windows::Forms::Label());
+			this->tbItemFilterID = (gcnew System::Windows::Forms::TextBox());
+			this->bItemFilterAdd = (gcnew System::Windows::Forms::Button());
 			this->rbItemFilterWhiteList = (gcnew System::Windows::Forms::RadioButton());
 			this->rbItemFilterBlackList = (gcnew System::Windows::Forms::RadioButton());
-			this->bItemFilter = (gcnew System::Windows::Forms::Button());
+			this->tabPage14 = (gcnew System::Windows::Forms::TabPage());
+			this->bMobFilter = (gcnew System::Windows::Forms::Button());
+			this->bMobSearchLogClear = (gcnew System::Windows::Forms::Button());
+			this->lbMobSearchLog = (gcnew System::Windows::Forms::ListBox());
+			this->tbMobFilterSearch = (gcnew System::Windows::Forms::TextBox());
+			this->label75 = (gcnew System::Windows::Forms::Label());
+			this->cbMobFilterLog = (gcnew System::Windows::Forms::CheckBox());
+			this->lbMobFilter = (gcnew System::Windows::Forms::ListBox());
+			this->label77 = (gcnew System::Windows::Forms::Label());
+			this->bMobFilterAdd = (gcnew System::Windows::Forms::Button());
+			this->rbMobFilterWhiteList = (gcnew System::Windows::Forms::RadioButton());
+			this->tbMobFilterID = (gcnew System::Windows::Forms::TextBox());
+			this->rbMobFilterBlackList = (gcnew System::Windows::Forms::RadioButton());
+			this->label76 = (gcnew System::Windows::Forms::Label());
 			this->tabPage8 = (gcnew System::Windows::Forms::TabPage());
 			this->tabControl5 = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage16 = (gcnew System::Windows::Forms::TabPage());
+			this->tvSendPackets = (gcnew System::Windows::Forms::TreeView());
 			this->label81 = (gcnew System::Windows::Forms::Label());
 			this->tbSendSpamDelay = (gcnew System::Windows::Forms::TextBox());
 			this->cbSendSpam = (gcnew System::Windows::Forms::CheckBox());
@@ -811,6 +844,7 @@ namespace Timelapse {
 			this->bSendClear = (gcnew System::Windows::Forms::Button());
 			this->bSendPacket = (gcnew System::Windows::Forms::Button());
 			this->tabPage15 = (gcnew System::Windows::Forms::TabPage());
+			this->tvRecvPackets = (gcnew System::Windows::Forms::TreeView());
 			this->bRecvRemove = (gcnew System::Windows::Forms::Button());
 			this->lvRecvBlock = (gcnew System::Windows::Forms::ListView());
 			this->tbRecvPacket = (gcnew System::Windows::Forms::TextBox());
@@ -820,6 +854,7 @@ namespace Timelapse {
 			this->bRecvPacket = (gcnew System::Windows::Forms::Button());
 			this->tabPage18 = (gcnew System::Windows::Forms::TabPage());
 			this->tabPage19 = (gcnew System::Windows::Forms::TabPage());
+			this->comboInUseSlot = (gcnew System::Windows::Forms::TextBox());
 			this->lbInUseSlot = (gcnew System::Windows::Forms::Label());
 			this->comboToTown = (gcnew System::Windows::Forms::ComboBox());
 			this->lbToTown = (gcnew System::Windows::Forms::Label());
@@ -866,11 +901,11 @@ namespace Timelapse {
 			this->btnClose = (gcnew System::Windows::Forms::Button());
 			this->GUITimer = (gcnew System::Windows::Forms::Timer(this->components));
 			this->AutoCCCSTimer = (gcnew System::Windows::Forms::Timer(this->components));
-			this->tvSendPackets = (gcnew System::Windows::Forms::TreeView());
-			this->tvRecvPackets = (gcnew System::Windows::Forms::TreeView());
 			this->tAutoAttack = (gcnew System::Windows::Forms::Timer(this->components));
 			this->tAutoLoot = (gcnew System::Windows::Forms::Timer(this->components));
-			this->comboInUseSlot = (gcnew System::Windows::Forms::TextBox());
+			this->AutoAPTimer = (gcnew System::Windows::Forms::Timer(this->components));
+			this->label95 = (gcnew System::Windows::Forms::Label());
+			this->lbMousePosAbs = (gcnew System::Windows::Forms::Label());
 			this->MenuStrip->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			this->pnlFull->SuspendLayout();
@@ -906,7 +941,6 @@ namespace Timelapse {
 			this->panel27->SuspendLayout();
 			this->panel1->SuspendLayout();
 			this->panel26->SuspendLayout();
-			this->panel18->SuspendLayout();
 			this->tabPage6->SuspendLayout();
 			this->panel28->SuspendLayout();
 			this->panel17->SuspendLayout();
@@ -916,8 +950,9 @@ namespace Timelapse {
 			this->panel13->SuspendLayout();
 			this->panel14->SuspendLayout();
 			this->tabPage7->SuspendLayout();
-			this->panel21->SuspendLayout();
-			this->panel20->SuspendLayout();
+			this->tabControl4->SuspendLayout();
+			this->tabPage13->SuspendLayout();
+			this->tabPage14->SuspendLayout();
 			this->tabPage8->SuspendLayout();
 			this->tabControl5->SuspendLayout();
 			this->tabPage16->SuspendLayout();
@@ -936,10 +971,11 @@ namespace Timelapse {
 			this->MenuStrip->ImageScalingSize = System::Drawing::Size(32, 32);
 			this->MenuStrip->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->fileToolStripMenuItem,
-					this->mapleStoryToolStripMenuItem, this->helpToolStripMenuItem });
+					this->mapleStoryToolStripMenuItem, this->helpToolStripMenuItem
+			});
 			this->MenuStrip->Location = System::Drawing::Point(0, 2);
 			this->MenuStrip->Name = L"MenuStrip";
-			this->MenuStrip->Size = System::Drawing::Size(168, 24);
+			this->MenuStrip->Size = System::Drawing::Size(156, 24);
 			this->MenuStrip->TabIndex = 1;
 			this->MenuStrip->Text = L"menuStrip1";
 			// 
@@ -949,9 +985,10 @@ namespace Timelapse {
 				static_cast<System::Int32>(static_cast<System::Byte>(19)), static_cast<System::Int32>(static_cast<System::Byte>(19)));
 			this->fileToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->openSettingsToolStripMenuItem,
-					this->saveSettingsToolStripMenuItem, this->closeMapleStoryToolStripMenuItem });
+					this->saveSettingsToolStripMenuItem, this->closeMapleStoryToolStripMenuItem
+			});
 			this->fileToolStripMenuItem->Name = L"fileToolStripMenuItem";
-			this->fileToolStripMenuItem->Size = System::Drawing::Size(37, 20);
+			this->fileToolStripMenuItem->Size = System::Drawing::Size(35, 20);
 			this->fileToolStripMenuItem->Text = L"File";
 			// 
 			// openSettingsToolStripMenuItem
@@ -960,7 +997,7 @@ namespace Timelapse {
 				static_cast<System::Int32>(static_cast<System::Byte>(19)), static_cast<System::Int32>(static_cast<System::Byte>(19)));
 			this->openSettingsToolStripMenuItem->ForeColor = System::Drawing::Color::White;
 			this->openSettingsToolStripMenuItem->Name = L"openSettingsToolStripMenuItem";
-			this->openSettingsToolStripMenuItem->Size = System::Drawing::Size(166, 22);
+			this->openSettingsToolStripMenuItem->Size = System::Drawing::Size(157, 22);
 			this->openSettingsToolStripMenuItem->Text = L"Open Settings";
 			this->openSettingsToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::loadSettingsToolStripMenuItem_Click);
 			// 
@@ -970,7 +1007,7 @@ namespace Timelapse {
 				static_cast<System::Int32>(static_cast<System::Byte>(19)), static_cast<System::Int32>(static_cast<System::Byte>(19)));
 			this->saveSettingsToolStripMenuItem->ForeColor = System::Drawing::Color::White;
 			this->saveSettingsToolStripMenuItem->Name = L"saveSettingsToolStripMenuItem";
-			this->saveSettingsToolStripMenuItem->Size = System::Drawing::Size(166, 22);
+			this->saveSettingsToolStripMenuItem->Size = System::Drawing::Size(157, 22);
 			this->saveSettingsToolStripMenuItem->Text = L"Save Settings";
 			this->saveSettingsToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::saveSettingsToolStripMenuItem_Click);
 			// 
@@ -980,7 +1017,7 @@ namespace Timelapse {
 				static_cast<System::Int32>(static_cast<System::Byte>(19)), static_cast<System::Int32>(static_cast<System::Byte>(19)));
 			this->closeMapleStoryToolStripMenuItem->ForeColor = System::Drawing::Color::White;
 			this->closeMapleStoryToolStripMenuItem->Name = L"closeMapleStoryToolStripMenuItem";
-			this->closeMapleStoryToolStripMenuItem->Size = System::Drawing::Size(166, 22);
+			this->closeMapleStoryToolStripMenuItem->Size = System::Drawing::Size(157, 22);
 			this->closeMapleStoryToolStripMenuItem->Text = L"&Close MapleStory";
 			this->closeMapleStoryToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::closeMapleStoryToolStripMenuItem_Click);
 			// 
@@ -990,9 +1027,10 @@ namespace Timelapse {
 				static_cast<System::Int32>(static_cast<System::Byte>(16)), static_cast<System::Int32>(static_cast<System::Byte>(16)));
 			this->mapleStoryToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->embedMSWindowToolStripMenuItem,
-					this->hideMSWindowToolStripMenuItem, this->injectDllToolStripMenuItem });
+					this->hideMSWindowToolStripMenuItem, this->injectDllToolStripMenuItem
+			});
 			this->mapleStoryToolStripMenuItem->Name = L"mapleStoryToolStripMenuItem";
-			this->mapleStoryToolStripMenuItem->Size = System::Drawing::Size(79, 20);
+			this->mapleStoryToolStripMenuItem->Size = System::Drawing::Size(73, 20);
 			this->mapleStoryToolStripMenuItem->Text = L"MapleStory";
 			// 
 			// embedMSWindowToolStripMenuItem
@@ -1001,7 +1039,7 @@ namespace Timelapse {
 				static_cast<System::Int32>(static_cast<System::Byte>(19)), static_cast<System::Int32>(static_cast<System::Byte>(19)));
 			this->embedMSWindowToolStripMenuItem->ForeColor = System::Drawing::Color::White;
 			this->embedMSWindowToolStripMenuItem->Name = L"embedMSWindowToolStripMenuItem";
-			this->embedMSWindowToolStripMenuItem->Size = System::Drawing::Size(178, 22);
+			this->embedMSWindowToolStripMenuItem->Size = System::Drawing::Size(164, 22);
 			this->embedMSWindowToolStripMenuItem->Text = L"Embed MS Window";
 			this->embedMSWindowToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::embedMSWindowToolStripMenuItem_Click);
 			// 
@@ -1011,7 +1049,7 @@ namespace Timelapse {
 				static_cast<System::Int32>(static_cast<System::Byte>(19)), static_cast<System::Int32>(static_cast<System::Byte>(19)));
 			this->hideMSWindowToolStripMenuItem->ForeColor = System::Drawing::Color::White;
 			this->hideMSWindowToolStripMenuItem->Name = L"hideMSWindowToolStripMenuItem";
-			this->hideMSWindowToolStripMenuItem->Size = System::Drawing::Size(178, 22);
+			this->hideMSWindowToolStripMenuItem->Size = System::Drawing::Size(164, 22);
 			this->hideMSWindowToolStripMenuItem->Text = L"Hide MS Window";
 			this->hideMSWindowToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::hideMSWindowToolStripMenuItem_Click);
 			// 
@@ -1021,14 +1059,14 @@ namespace Timelapse {
 				static_cast<System::Int32>(static_cast<System::Byte>(19)), static_cast<System::Int32>(static_cast<System::Byte>(19)));
 			this->injectDllToolStripMenuItem->ForeColor = System::Drawing::Color::White;
 			this->injectDllToolStripMenuItem->Name = L"injectDllToolStripMenuItem";
-			this->injectDllToolStripMenuItem->Size = System::Drawing::Size(178, 22);
+			this->injectDllToolStripMenuItem->Size = System::Drawing::Size(164, 22);
 			this->injectDllToolStripMenuItem->Text = L"Inject Dll";
 			// 
 			// helpToolStripMenuItem
 			// 
 			this->helpToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->aboutToolStripMenuItem });
 			this->helpToolStripMenuItem->Name = L"helpToolStripMenuItem";
-			this->helpToolStripMenuItem->Size = System::Drawing::Size(44, 20);
+			this->helpToolStripMenuItem->Size = System::Drawing::Size(40, 20);
 			this->helpToolStripMenuItem->Text = L"Help";
 			// 
 			// aboutToolStripMenuItem
@@ -1037,7 +1075,7 @@ namespace Timelapse {
 				static_cast<System::Int32>(static_cast<System::Byte>(19)), static_cast<System::Int32>(static_cast<System::Byte>(19)));
 			this->aboutToolStripMenuItem->ForeColor = System::Drawing::Color::White;
 			this->aboutToolStripMenuItem->Name = L"aboutToolStripMenuItem";
-			this->aboutToolStripMenuItem->Size = System::Drawing::Size(107, 22);
+			this->aboutToolStripMenuItem->Size = System::Drawing::Size(103, 22);
 			this->aboutToolStripMenuItem->Text = L"&About";
 			// 
 			// label1
@@ -1047,7 +1085,7 @@ namespace Timelapse {
 				static_cast<System::Int32>(static_cast<System::Byte>(16)));
 			this->label1->Font = (gcnew System::Drawing::Font(L"Tahoma", 6.75F));
 			this->label1->ForeColor = System::Drawing::Color::Gray;
-			this->label1->Location = System::Drawing::Point(484, 2);
+			this->label1->Location = System::Drawing::Point(553, 7);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(70, 22);
 			this->label1->TabIndex = 3;
@@ -1063,7 +1101,7 @@ namespace Timelapse {
 			this->lbTitle->Font = (gcnew System::Drawing::Font(L"Tahoma", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lbTitle->ForeColor = System::Drawing::Color::Silver;
-			this->lbTitle->Location = System::Drawing::Point(29, 8);
+			this->lbTitle->Location = System::Drawing::Point(29, 9);
 			this->lbTitle->Name = L"lbTitle";
 			this->lbTitle->Size = System::Drawing::Size(121, 16);
 			this->lbTitle->TabIndex = 12;
@@ -1076,7 +1114,7 @@ namespace Timelapse {
 			// 
 			this->pictureBox2->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-			this->pictureBox2->Location = System::Drawing::Point(7, 6);
+			this->pictureBox2->Location = System::Drawing::Point(3, 7);
 			this->pictureBox2->Name = L"pictureBox2";
 			this->pictureBox2->Size = System::Drawing::Size(20, 21);
 			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -1101,7 +1139,7 @@ namespace Timelapse {
 			this->pnlFull->ForeColor = System::Drawing::Color::White;
 			this->pnlFull->Location = System::Drawing::Point(0, 0);
 			this->pnlFull->Name = L"pnlFull";
-			this->pnlFull->Size = System::Drawing::Size(560, 500);
+			this->pnlFull->Size = System::Drawing::Size(633, 522);
 			this->pnlFull->TabIndex = 13;
 			this->pnlFull->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &MainForm::pnlFull_MouseDown);
 			this->pnlFull->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &MainForm::pnlFull_MouseMove);
@@ -1114,7 +1152,7 @@ namespace Timelapse {
 				static_cast<System::Int32>(static_cast<System::Byte>(19)));
 			this->lbMapName->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbMapName->ForeColor = System::Drawing::Color::Silver;
-			this->lbMapName->Location = System::Drawing::Point(65, 479);
+			this->lbMapName->Location = System::Drawing::Point(65, 496);
 			this->lbMapName->Name = L"lbMapName";
 			this->lbMapName->Size = System::Drawing::Size(55, 13);
 			this->lbMapName->TabIndex = 42;
@@ -1130,7 +1168,7 @@ namespace Timelapse {
 				static_cast<System::Int32>(static_cast<System::Byte>(19)));
 			this->label21->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->label21->ForeColor = System::Drawing::Color::Silver;
-			this->label21->Location = System::Drawing::Point(5, 479);
+			this->label21->Location = System::Drawing::Point(5, 496);
 			this->label21->Name = L"label21";
 			this->label21->Size = System::Drawing::Size(61, 13);
 			this->label21->TabIndex = 22;
@@ -1151,7 +1189,7 @@ namespace Timelapse {
 			this->btnMinimize->Font = (gcnew System::Drawing::Font(L"Lucida Console", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnMinimize->ForeColor = System::Drawing::Color::Silver;
-			this->btnMinimize->Location = System::Drawing::Point(494, -1);
+			this->btnMinimize->Location = System::Drawing::Point(578, -1);
 			this->btnMinimize->Name = L"btnMinimize";
 			this->btnMinimize->Size = System::Drawing::Size(29, 29);
 			this->btnMinimize->TabIndex = 9;
@@ -1164,6 +1202,24 @@ namespace Timelapse {
 			this->pnlMiddle->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(19)), static_cast<System::Int32>(static_cast<System::Byte>(19)),
 				static_cast<System::Int32>(static_cast<System::Byte>(19)));
 			this->pnlMiddle->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->pnlMiddle->Controls->Add(this->lbMousePosAbs);
+			this->pnlMiddle->Controls->Add(this->label95);
+			this->pnlMiddle->Controls->Add(this->lbMouseAnim);
+			this->pnlMiddle->Controls->Add(this->label12);
+			this->pnlMiddle->Controls->Add(this->lbCharPos);
+			this->pnlMiddle->Controls->Add(this->labelMouseAnim);
+			this->pnlMiddle->Controls->Add(this->lbLUK);
+			this->pnlMiddle->Controls->Add(this->lbINT);
+			this->pnlMiddle->Controls->Add(this->lbDEX);
+			this->pnlMiddle->Controls->Add(this->lbSTR);
+			this->pnlMiddle->Controls->Add(this->lbSP);
+			this->pnlMiddle->Controls->Add(this->lbAP);
+			this->pnlMiddle->Controls->Add(this->labelSP);
+			this->pnlMiddle->Controls->Add(this->labelLUK);
+			this->pnlMiddle->Controls->Add(this->labelINT);
+			this->pnlMiddle->Controls->Add(this->labelDEX);
+			this->pnlMiddle->Controls->Add(this->labelSTR);
+			this->pnlMiddle->Controls->Add(this->labelAP);
 			this->pnlMiddle->Controls->Add(this->lbCharFoothold);
 			this->pnlMiddle->Controls->Add(this->label96);
 			this->pnlMiddle->Controls->Add(this->lbCharAnimation);
@@ -1183,7 +1239,6 @@ namespace Timelapse {
 			this->pnlMiddle->Controls->Add(this->lbBuffCount);
 			this->pnlMiddle->Controls->Add(this->lbAttackCount);
 			this->pnlMiddle->Controls->Add(this->lbMousePos);
-			this->pnlMiddle->Controls->Add(this->lbCharPos);
 			this->pnlMiddle->Controls->Add(this->lbMapID);
 			this->pnlMiddle->Controls->Add(this->lbChannel);
 			this->pnlMiddle->Controls->Add(this->lbWorld);
@@ -1206,7 +1261,6 @@ namespace Timelapse {
 			this->pnlMiddle->Controls->Add(this->label15);
 			this->pnlMiddle->Controls->Add(this->label14);
 			this->pnlMiddle->Controls->Add(this->label13);
-			this->pnlMiddle->Controls->Add(this->label12);
 			this->pnlMiddle->Controls->Add(this->label11);
 			this->pnlMiddle->Controls->Add(this->label10);
 			this->pnlMiddle->Controls->Add(this->label9);
@@ -1219,20 +1273,167 @@ namespace Timelapse {
 			this->pnlMiddle->Controls->Add(this->label1);
 			this->pnlMiddle->Controls->Add(this->MenuStrip);
 			this->pnlMiddle->Controls->Add(this->tabControl1);
-			this->pnlMiddle->Location = System::Drawing::Point(0, 28);
+			this->pnlMiddle->Location = System::Drawing::Point(3, 31);
 			this->pnlMiddle->Name = L"pnlMiddle";
-			this->pnlMiddle->Size = System::Drawing::Size(560, 445);
+			this->pnlMiddle->Size = System::Drawing::Size(629, 462);
 			this->pnlMiddle->TabIndex = 3;
 			this->pnlMiddle->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &MainForm::pnlFull_MouseDown);
 			this->pnlMiddle->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &MainForm::pnlFull_MouseMove);
 			this->pnlMiddle->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &MainForm::pnlFull_MouseUp);
+			// 
+			// lbMouseAnim
+			// 
+			this->lbMouseAnim->AutoSize = true;
+			this->lbMouseAnim->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
+			this->lbMouseAnim->ForeColor = System::Drawing::Color::Chartreuse;
+			this->lbMouseAnim->Location = System::Drawing::Point(550, 300);
+			this->lbMouseAnim->Name = L"lbMouseAnim";
+			this->lbMouseAnim->Size = System::Drawing::Size(25, 13);
+			this->lbMouseAnim->TabIndex = 73;
+			this->lbMouseAnim->Text = L"000";
+			// 
+			// labelMouseAnim
+			// 
+			this->labelMouseAnim->AutoSize = true;
+			this->labelMouseAnim->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
+			this->labelMouseAnim->Location = System::Drawing::Point(450, 300);
+			this->labelMouseAnim->Name = L"labelMouseAnim";
+			this->labelMouseAnim->Size = System::Drawing::Size(92, 13);
+			this->labelMouseAnim->TabIndex = 72;
+			this->labelMouseAnim->Text = L"Mouse Animation:";
+			// 
+			// lbLUK
+			// 
+			this->lbLUK->AutoSize = true;
+			this->lbLUK->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
+			this->lbLUK->ForeColor = System::Drawing::Color::Orange;
+			this->lbLUK->Location = System::Drawing::Point(599, 129);
+			this->lbLUK->Name = L"lbLUK";
+			this->lbLUK->Size = System::Drawing::Size(13, 13);
+			this->lbLUK->TabIndex = 71;
+			this->lbLUK->Text = L"0";
+			// 
+			// lbINT
+			// 
+			this->lbINT->AutoSize = true;
+			this->lbINT->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
+			this->lbINT->ForeColor = System::Drawing::Color::Orange;
+			this->lbINT->Location = System::Drawing::Point(599, 114);
+			this->lbINT->Name = L"lbINT";
+			this->lbINT->Size = System::Drawing::Size(13, 13);
+			this->lbINT->TabIndex = 70;
+			this->lbINT->Text = L"0";
+			// 
+			// lbDEX
+			// 
+			this->lbDEX->AutoSize = true;
+			this->lbDEX->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
+			this->lbDEX->ForeColor = System::Drawing::Color::Orange;
+			this->lbDEX->Location = System::Drawing::Point(599, 99);
+			this->lbDEX->Name = L"lbDEX";
+			this->lbDEX->Size = System::Drawing::Size(13, 13);
+			this->lbDEX->TabIndex = 69;
+			this->lbDEX->Text = L"0";
+			// 
+			// lbSTR
+			// 
+			this->lbSTR->AutoSize = true;
+			this->lbSTR->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
+			this->lbSTR->ForeColor = System::Drawing::Color::Orange;
+			this->lbSTR->Location = System::Drawing::Point(599, 84);
+			this->lbSTR->Name = L"lbSTR";
+			this->lbSTR->Size = System::Drawing::Size(13, 13);
+			this->lbSTR->TabIndex = 68;
+			this->lbSTR->Text = L"0";
+			// 
+			// lbSP
+			// 
+			this->lbSP->AutoSize = true;
+			this->lbSP->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
+			this->lbSP->ForeColor = System::Drawing::Color::Orange;
+			this->lbSP->Location = System::Drawing::Point(594, 69);
+			this->lbSP->Name = L"lbSP";
+			this->lbSP->Size = System::Drawing::Size(13, 13);
+			this->lbSP->TabIndex = 67;
+			this->lbSP->Text = L"0";
+			// 
+			// lbAP
+			// 
+			this->lbAP->AutoSize = true;
+			this->lbAP->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
+			this->lbAP->ForeColor = System::Drawing::Color::Orange;
+			this->lbAP->Location = System::Drawing::Point(594, 54);
+			this->lbAP->Name = L"lbAP";
+			this->lbAP->Size = System::Drawing::Size(13, 13);
+			this->lbAP->TabIndex = 66;
+			this->lbAP->Text = L"0";
+			// 
+			// labelSP
+			// 
+			this->labelSP->AutoSize = true;
+			this->labelSP->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
+			this->labelSP->Location = System::Drawing::Point(571, 69);
+			this->labelSP->Name = L"labelSP";
+			this->labelSP->Size = System::Drawing::Size(23, 13);
+			this->labelSP->TabIndex = 65;
+			this->labelSP->Text = L"SP:";
+			// 
+			// labelLUK
+			// 
+			this->labelLUK->AutoSize = true;
+			this->labelLUK->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
+			this->labelLUK->Location = System::Drawing::Point(571, 129);
+			this->labelLUK->Name = L"labelLUK";
+			this->labelLUK->Size = System::Drawing::Size(29, 13);
+			this->labelLUK->TabIndex = 64;
+			this->labelLUK->Text = L"LUK:";
+			// 
+			// labelINT
+			// 
+			this->labelINT->AutoSize = true;
+			this->labelINT->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
+			this->labelINT->Location = System::Drawing::Point(571, 114);
+			this->labelINT->Name = L"labelINT";
+			this->labelINT->Size = System::Drawing::Size(28, 13);
+			this->labelINT->TabIndex = 63;
+			this->labelINT->Text = L"INT:";
+			// 
+			// labelDEX
+			// 
+			this->labelDEX->AutoSize = true;
+			this->labelDEX->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
+			this->labelDEX->Location = System::Drawing::Point(571, 99);
+			this->labelDEX->Name = L"labelDEX";
+			this->labelDEX->Size = System::Drawing::Size(30, 13);
+			this->labelDEX->TabIndex = 62;
+			this->labelDEX->Text = L"DEX:";
+			// 
+			// labelSTR
+			// 
+			this->labelSTR->AutoSize = true;
+			this->labelSTR->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
+			this->labelSTR->Location = System::Drawing::Point(571, 84);
+			this->labelSTR->Name = L"labelSTR";
+			this->labelSTR->Size = System::Drawing::Size(30, 13);
+			this->labelSTR->TabIndex = 61;
+			this->labelSTR->Text = L"STR:";
+			// 
+			// labelAP
+			// 
+			this->labelAP->AutoSize = true;
+			this->labelAP->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
+			this->labelAP->Location = System::Drawing::Point(571, 54);
+			this->labelAP->Name = L"labelAP";
+			this->labelAP->Size = System::Drawing::Size(24, 13);
+			this->labelAP->TabIndex = 60;
+			this->labelAP->Text = L"AP:";
 			// 
 			// lbCharFoothold
 			// 
 			this->lbCharFoothold->AutoSize = true;
 			this->lbCharFoothold->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbCharFoothold->ForeColor = System::Drawing::Color::SkyBlue;
-			this->lbCharFoothold->Location = System::Drawing::Point(487, 237);
+			this->lbCharFoothold->Location = System::Drawing::Point(532, 229);
 			this->lbCharFoothold->Name = L"lbCharFoothold";
 			this->lbCharFoothold->Size = System::Drawing::Size(25, 13);
 			this->lbCharFoothold->TabIndex = 59;
@@ -1242,7 +1443,7 @@ namespace Timelapse {
 			// 
 			this->label96->AutoSize = true;
 			this->label96->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
-			this->label96->Location = System::Drawing::Point(405, 238);
+			this->label96->Location = System::Drawing::Point(450, 229);
 			this->label96->Name = L"label96";
 			this->label96->Size = System::Drawing::Size(79, 13);
 			this->label96->TabIndex = 58;
@@ -1253,7 +1454,7 @@ namespace Timelapse {
 			this->lbCharAnimation->AutoSize = true;
 			this->lbCharAnimation->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbCharAnimation->ForeColor = System::Drawing::Color::Chartreuse;
-			this->lbCharAnimation->Location = System::Drawing::Point(491, 253);
+			this->lbCharAnimation->Location = System::Drawing::Point(537, 259);
 			this->lbCharAnimation->Name = L"lbCharAnimation";
 			this->lbCharAnimation->Size = System::Drawing::Size(25, 13);
 			this->lbCharAnimation->TabIndex = 57;
@@ -1263,7 +1464,7 @@ namespace Timelapse {
 			// 
 			this->label94->AutoSize = true;
 			this->label94->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
-			this->label94->Location = System::Drawing::Point(405, 253);
+			this->label94->Location = System::Drawing::Point(450, 259);
 			this->label94->Name = L"label94";
 			this->label94->Size = System::Drawing::Size(84, 13);
 			this->label94->TabIndex = 56;
@@ -1274,7 +1475,7 @@ namespace Timelapse {
 			this->lbWalls->AutoSize = true;
 			this->lbWalls->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbWalls->ForeColor = System::Drawing::Color::MediumOrchid;
-			this->lbWalls->Location = System::Drawing::Point(436, 218);
+			this->lbWalls->Location = System::Drawing::Point(481, 209);
 			this->lbWalls->Name = L"lbWalls";
 			this->lbWalls->Size = System::Drawing::Size(120, 13);
 			this->lbWalls->TabIndex = 55;
@@ -1284,7 +1485,7 @@ namespace Timelapse {
 			// 
 			this->label92->AutoSize = true;
 			this->label92->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
-			this->label92->Location = System::Drawing::Point(405, 218);
+			this->label92->Location = System::Drawing::Point(450, 209);
 			this->label92->Name = L"label92";
 			this->label92->Size = System::Drawing::Size(36, 13);
 			this->label92->TabIndex = 54;
@@ -1294,7 +1495,7 @@ namespace Timelapse {
 			// 
 			this->bTestButton->FlatAppearance->BorderColor = System::Drawing::Color::Gray;
 			this->bTestButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->bTestButton->Location = System::Drawing::Point(408, 3);
+			this->bTestButton->Location = System::Drawing::Point(449, 2);
 			this->bTestButton->Name = L"bTestButton";
 			this->bTestButton->Size = System::Drawing::Size(56, 24);
 			this->bTestButton->TabIndex = 51;
@@ -1307,7 +1508,7 @@ namespace Timelapse {
 			this->lbInactive->AutoSize = true;
 			this->lbInactive->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbInactive->ForeColor = System::Drawing::Color::Red;
-			this->lbInactive->Location = System::Drawing::Point(508, 24);
+			this->lbInactive->Location = System::Drawing::Point(577, 29);
 			this->lbInactive->Name = L"lbInactive";
 			this->lbInactive->RightToLeft = System::Windows::Forms::RightToLeft::No;
 			this->lbInactive->Size = System::Drawing::Size(46, 13);
@@ -1324,7 +1525,7 @@ namespace Timelapse {
 			this->lbActive->AutoSize = true;
 			this->lbActive->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbActive->ForeColor = System::Drawing::Color::Green;
-			this->lbActive->Location = System::Drawing::Point(517, 24);
+			this->lbActive->Location = System::Drawing::Point(586, 29);
 			this->lbActive->Name = L"lbActive";
 			this->lbActive->RightToLeft = System::Windows::Forms::RightToLeft::No;
 			this->lbActive->Size = System::Drawing::Size(37, 13);
@@ -1341,7 +1542,7 @@ namespace Timelapse {
 			this->lbThreadID->AutoSize = true;
 			this->lbThreadID->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbThreadID->ForeColor = System::Drawing::Color::SpringGreen;
-			this->lbThreadID->Location = System::Drawing::Point(468, 427);
+			this->lbThreadID->Location = System::Drawing::Point(513, 439);
 			this->lbThreadID->Name = L"lbThreadID";
 			this->lbThreadID->Size = System::Drawing::Size(43, 13);
 			this->lbThreadID->TabIndex = 48;
@@ -1355,7 +1556,7 @@ namespace Timelapse {
 			this->lbNPCCount->AutoSize = true;
 			this->lbNPCCount->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbNPCCount->ForeColor = System::Drawing::Color::PaleTurquoise;
-			this->lbNPCCount->Location = System::Drawing::Point(485, 408);
+			this->lbNPCCount->Location = System::Drawing::Point(530, 420);
 			this->lbNPCCount->Name = L"lbNPCCount";
 			this->lbNPCCount->Size = System::Drawing::Size(25, 13);
 			this->lbNPCCount->TabIndex = 47;
@@ -1369,7 +1570,7 @@ namespace Timelapse {
 			this->lbPortalCount->AutoSize = true;
 			this->lbPortalCount->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbPortalCount->ForeColor = System::Drawing::Color::PaleTurquoise;
-			this->lbPortalCount->Location = System::Drawing::Point(485, 393);
+			this->lbPortalCount->Location = System::Drawing::Point(530, 405);
 			this->lbPortalCount->Name = L"lbPortalCount";
 			this->lbPortalCount->Size = System::Drawing::Size(25, 13);
 			this->lbPortalCount->TabIndex = 46;
@@ -1383,7 +1584,7 @@ namespace Timelapse {
 			this->lbItemCount->AutoSize = true;
 			this->lbItemCount->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbItemCount->ForeColor = System::Drawing::Color::PaleTurquoise;
-			this->lbItemCount->Location = System::Drawing::Point(485, 378);
+			this->lbItemCount->Location = System::Drawing::Point(530, 390);
 			this->lbItemCount->Name = L"lbItemCount";
 			this->lbItemCount->Size = System::Drawing::Size(25, 13);
 			this->lbItemCount->TabIndex = 45;
@@ -1397,7 +1598,7 @@ namespace Timelapse {
 			this->lbMobCount->AutoSize = true;
 			this->lbMobCount->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbMobCount->ForeColor = System::Drawing::Color::PaleTurquoise;
-			this->lbMobCount->Location = System::Drawing::Point(485, 363);
+			this->lbMobCount->Location = System::Drawing::Point(530, 375);
 			this->lbMobCount->Name = L"lbMobCount";
 			this->lbMobCount->Size = System::Drawing::Size(25, 13);
 			this->lbMobCount->TabIndex = 44;
@@ -1411,7 +1612,7 @@ namespace Timelapse {
 			this->lbPeopleCount->AutoSize = true;
 			this->lbPeopleCount->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbPeopleCount->ForeColor = System::Drawing::Color::PaleTurquoise;
-			this->lbPeopleCount->Location = System::Drawing::Point(485, 348);
+			this->lbPeopleCount->Location = System::Drawing::Point(530, 360);
 			this->lbPeopleCount->Name = L"lbPeopleCount";
 			this->lbPeopleCount->Size = System::Drawing::Size(25, 13);
 			this->lbPeopleCount->TabIndex = 43;
@@ -1425,7 +1626,7 @@ namespace Timelapse {
 			this->lbBreathCount->AutoSize = true;
 			this->lbBreathCount->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbBreathCount->ForeColor = System::Drawing::Color::PaleTurquoise;
-			this->lbBreathCount->Location = System::Drawing::Point(485, 333);
+			this->lbBreathCount->Location = System::Drawing::Point(530, 345);
 			this->lbBreathCount->Name = L"lbBreathCount";
 			this->lbBreathCount->Size = System::Drawing::Size(25, 13);
 			this->lbBreathCount->TabIndex = 42;
@@ -1439,7 +1640,7 @@ namespace Timelapse {
 			this->lbBuffCount->AutoSize = true;
 			this->lbBuffCount->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbBuffCount->ForeColor = System::Drawing::Color::PaleTurquoise;
-			this->lbBuffCount->Location = System::Drawing::Point(485, 318);
+			this->lbBuffCount->Location = System::Drawing::Point(530, 330);
 			this->lbBuffCount->Name = L"lbBuffCount";
 			this->lbBuffCount->Size = System::Drawing::Size(25, 13);
 			this->lbBuffCount->TabIndex = 41;
@@ -1453,7 +1654,7 @@ namespace Timelapse {
 			this->lbAttackCount->AutoSize = true;
 			this->lbAttackCount->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbAttackCount->ForeColor = System::Drawing::Color::PaleTurquoise;
-			this->lbAttackCount->Location = System::Drawing::Point(485, 303);
+			this->lbAttackCount->Location = System::Drawing::Point(530, 315);
 			this->lbAttackCount->Name = L"lbAttackCount";
 			this->lbAttackCount->Size = System::Drawing::Size(25, 13);
 			this->lbAttackCount->TabIndex = 40;
@@ -1467,7 +1668,7 @@ namespace Timelapse {
 			this->lbMousePos->AutoSize = true;
 			this->lbMousePos->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbMousePos->ForeColor = System::Drawing::Color::LightGreen;
-			this->lbMousePos->Location = System::Drawing::Point(470, 283);
+			this->lbMousePos->Location = System::Drawing::Point(516, 274);
 			this->lbMousePos->Name = L"lbMousePos";
 			this->lbMousePos->Size = System::Drawing::Size(70, 13);
 			this->lbMousePos->TabIndex = 39;
@@ -1481,7 +1682,7 @@ namespace Timelapse {
 			this->lbCharPos->AutoSize = true;
 			this->lbCharPos->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbCharPos->ForeColor = System::Drawing::Color::Khaki;
-			this->lbCharPos->Location = System::Drawing::Point(459, 268);
+			this->lbCharPos->Location = System::Drawing::Point(505, 244);
 			this->lbCharPos->Name = L"lbCharPos";
 			this->lbCharPos->Size = System::Drawing::Size(70, 13);
 			this->lbCharPos->TabIndex = 38;
@@ -1495,7 +1696,7 @@ namespace Timelapse {
 			this->lbMapID->AutoSize = true;
 			this->lbMapID->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbMapID->ForeColor = System::Drawing::Color::MediumPurple;
-			this->lbMapID->Location = System::Drawing::Point(452, 203);
+			this->lbMapID->Location = System::Drawing::Point(497, 194);
 			this->lbMapID->Name = L"lbMapID";
 			this->lbMapID->Size = System::Drawing::Size(61, 13);
 			this->lbMapID->TabIndex = 37;
@@ -1509,7 +1710,7 @@ namespace Timelapse {
 			this->lbChannel->AutoSize = true;
 			this->lbChannel->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbChannel->ForeColor = System::Drawing::Color::LightPink;
-			this->lbChannel->Location = System::Drawing::Point(457, 188);
+			this->lbChannel->Location = System::Drawing::Point(502, 179);
 			this->lbChannel->Name = L"lbChannel";
 			this->lbChannel->Size = System::Drawing::Size(19, 13);
 			this->lbChannel->TabIndex = 35;
@@ -1523,7 +1724,7 @@ namespace Timelapse {
 			this->lbWorld->AutoSize = true;
 			this->lbWorld->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbWorld->ForeColor = System::Drawing::Color::LightCoral;
-			this->lbWorld->Location = System::Drawing::Point(443, 173);
+			this->lbWorld->Location = System::Drawing::Point(488, 164);
 			this->lbWorld->Name = L"lbWorld";
 			this->lbWorld->Size = System::Drawing::Size(24, 13);
 			this->lbWorld->TabIndex = 34;
@@ -1538,7 +1739,7 @@ namespace Timelapse {
 			this->lbMesos->AutoSize = true;
 			this->lbMesos->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbMesos->ForeColor = System::Drawing::Color::Yellow;
-			this->lbMesos->Location = System::Drawing::Point(447, 153);
+			this->lbMesos->Location = System::Drawing::Point(492, 144);
 			this->lbMesos->Name = L"lbMesos";
 			this->lbMesos->Size = System::Drawing::Size(13, 13);
 			this->lbMesos->TabIndex = 33;
@@ -1552,7 +1753,7 @@ namespace Timelapse {
 			this->lbEXP->AutoSize = true;
 			this->lbEXP->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbEXP->ForeColor = System::Drawing::Color::Lime;
-			this->lbEXP->Location = System::Drawing::Point(433, 138);
+			this->lbEXP->Location = System::Drawing::Point(478, 129);
 			this->lbEXP->Name = L"lbEXP";
 			this->lbEXP->Size = System::Drawing::Size(40, 13);
 			this->lbEXP->TabIndex = 32;
@@ -1567,7 +1768,7 @@ namespace Timelapse {
 			this->lbMP->AutoSize = true;
 			this->lbMP->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbMP->ForeColor = System::Drawing::Color::Aqua;
-			this->lbMP->Location = System::Drawing::Point(433, 123);
+			this->lbMP->Location = System::Drawing::Point(478, 114);
 			this->lbMP->Name = L"lbMP";
 			this->lbMP->Size = System::Drawing::Size(40, 13);
 			this->lbMP->TabIndex = 31;
@@ -1582,7 +1783,7 @@ namespace Timelapse {
 			this->lbHP->AutoSize = true;
 			this->lbHP->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbHP->ForeColor = System::Drawing::Color::Red;
-			this->lbHP->Location = System::Drawing::Point(432, 108);
+			this->lbHP->Location = System::Drawing::Point(477, 99);
 			this->lbHP->Name = L"lbHP";
 			this->lbHP->Size = System::Drawing::Size(40, 13);
 			this->lbHP->TabIndex = 30;
@@ -1597,7 +1798,7 @@ namespace Timelapse {
 			this->lbJob->AutoSize = true;
 			this->lbJob->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbJob->ForeColor = System::Drawing::Color::DodgerBlue;
-			this->lbJob->Location = System::Drawing::Point(432, 93);
+			this->lbJob->Location = System::Drawing::Point(477, 84);
 			this->lbJob->Name = L"lbJob";
 			this->lbJob->Size = System::Drawing::Size(24, 13);
 			this->lbJob->TabIndex = 29;
@@ -1612,7 +1813,7 @@ namespace Timelapse {
 			this->lbLevel->AutoSize = true;
 			this->lbLevel->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbLevel->ForeColor = System::Drawing::Color::Orange;
-			this->lbLevel->Location = System::Drawing::Point(440, 78);
+			this->lbLevel->Location = System::Drawing::Point(485, 69);
 			this->lbLevel->Name = L"lbLevel";
 			this->lbLevel->Size = System::Drawing::Size(13, 13);
 			this->lbLevel->TabIndex = 28;
@@ -1626,7 +1827,7 @@ namespace Timelapse {
 			this->lbCharName->AutoSize = true;
 			this->lbCharName->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
 			this->lbCharName->ForeColor = System::Drawing::Color::Gold;
-			this->lbCharName->Location = System::Drawing::Point(423, 63);
+			this->lbCharName->Location = System::Drawing::Point(468, 54);
 			this->lbCharName->Name = L"lbCharName";
 			this->lbCharName->Size = System::Drawing::Size(57, 13);
 			this->lbCharName->TabIndex = 27;
@@ -1639,7 +1840,7 @@ namespace Timelapse {
 			// 
 			this->label25->AutoSize = true;
 			this->label25->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
-			this->label25->Location = System::Drawing::Point(405, 318);
+			this->label25->Location = System::Drawing::Point(450, 330);
 			this->label25->Name = L"label25";
 			this->label25->Size = System::Drawing::Size(63, 13);
 			this->label25->TabIndex = 26;
@@ -1652,7 +1853,7 @@ namespace Timelapse {
 			// 
 			this->label24->AutoSize = true;
 			this->label24->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
-			this->label24->Location = System::Drawing::Point(405, 408);
+			this->label24->Location = System::Drawing::Point(450, 420);
 			this->label24->Name = L"label24";
 			this->label24->Size = System::Drawing::Size(59, 13);
 			this->label24->TabIndex = 25;
@@ -1665,7 +1866,7 @@ namespace Timelapse {
 			// 
 			this->label23->AutoSize = true;
 			this->label23->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
-			this->label23->Location = System::Drawing::Point(405, 283);
+			this->label23->Location = System::Drawing::Point(450, 274);
 			this->label23->Name = L"label23";
 			this->label23->Size = System::Drawing::Size(62, 13);
 			this->label23->TabIndex = 24;
@@ -1678,7 +1879,7 @@ namespace Timelapse {
 			// 
 			this->label22->AutoSize = true;
 			this->label22->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
-			this->label22->Location = System::Drawing::Point(405, 428);
+			this->label22->Location = System::Drawing::Point(450, 440);
 			this->label22->Name = L"label22";
 			this->label22->Size = System::Drawing::Size(62, 13);
 			this->label22->TabIndex = 23;
@@ -1691,7 +1892,7 @@ namespace Timelapse {
 			// 
 			this->label20->AutoSize = true;
 			this->label20->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
-			this->label20->Location = System::Drawing::Point(405, 333);
+			this->label20->Location = System::Drawing::Point(450, 345);
 			this->label20->Name = L"label20";
 			this->label20->Size = System::Drawing::Size(75, 13);
 			this->label20->TabIndex = 21;
@@ -1704,7 +1905,7 @@ namespace Timelapse {
 			// 
 			this->label19->AutoSize = true;
 			this->label19->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
-			this->label19->Location = System::Drawing::Point(405, 153);
+			this->label19->Location = System::Drawing::Point(450, 144);
 			this->label19->Name = L"label19";
 			this->label19->Size = System::Drawing::Size(41, 13);
 			this->label19->TabIndex = 20;
@@ -1717,7 +1918,7 @@ namespace Timelapse {
 			// 
 			this->label18->AutoSize = true;
 			this->label18->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
-			this->label18->Location = System::Drawing::Point(405, 93);
+			this->label18->Location = System::Drawing::Point(450, 84);
 			this->label18->Name = L"label18";
 			this->label18->Size = System::Drawing::Size(28, 13);
 			this->label18->TabIndex = 19;
@@ -1730,7 +1931,7 @@ namespace Timelapse {
 			// 
 			this->label17->AutoSize = true;
 			this->label17->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
-			this->label17->Location = System::Drawing::Point(405, 393);
+			this->label17->Location = System::Drawing::Point(450, 405);
 			this->label17->Name = L"label17";
 			this->label17->Size = System::Drawing::Size(67, 13);
 			this->label17->TabIndex = 18;
@@ -1743,7 +1944,7 @@ namespace Timelapse {
 			// 
 			this->label16->AutoSize = true;
 			this->label16->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
-			this->label16->Location = System::Drawing::Point(405, 378);
+			this->label16->Location = System::Drawing::Point(450, 390);
 			this->label16->Name = L"label16";
 			this->label16->Size = System::Drawing::Size(65, 13);
 			this->label16->TabIndex = 17;
@@ -1756,7 +1957,7 @@ namespace Timelapse {
 			// 
 			this->label15->AutoSize = true;
 			this->label15->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
-			this->label15->Location = System::Drawing::Point(405, 363);
+			this->label15->Location = System::Drawing::Point(450, 375);
 			this->label15->Name = L"label15";
 			this->label15->Size = System::Drawing::Size(66, 13);
 			this->label15->TabIndex = 16;
@@ -1769,7 +1970,7 @@ namespace Timelapse {
 			// 
 			this->label14->AutoSize = true;
 			this->label14->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
-			this->label14->Location = System::Drawing::Point(405, 348);
+			this->label14->Location = System::Drawing::Point(450, 360);
 			this->label14->Name = L"label14";
 			this->label14->Size = System::Drawing::Size(75, 13);
 			this->label14->TabIndex = 15;
@@ -1782,7 +1983,7 @@ namespace Timelapse {
 			// 
 			this->label13->AutoSize = true;
 			this->label13->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
-			this->label13->Location = System::Drawing::Point(405, 303);
+			this->label13->Location = System::Drawing::Point(450, 315);
 			this->label13->Name = L"label13";
 			this->label13->Size = System::Drawing::Size(74, 13);
 			this->label13->TabIndex = 14;
@@ -1795,7 +1996,7 @@ namespace Timelapse {
 			// 
 			this->label12->AutoSize = true;
 			this->label12->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
-			this->label12->Location = System::Drawing::Point(405, 268);
+			this->label12->Location = System::Drawing::Point(450, 244);
 			this->label12->Name = L"label12";
 			this->label12->Size = System::Drawing::Size(54, 13);
 			this->label12->TabIndex = 13;
@@ -1808,7 +2009,7 @@ namespace Timelapse {
 			// 
 			this->label11->AutoSize = true;
 			this->label11->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
-			this->label11->Location = System::Drawing::Point(405, 203);
+			this->label11->Location = System::Drawing::Point(450, 194);
 			this->label11->Name = L"label11";
 			this->label11->Size = System::Drawing::Size(48, 13);
 			this->label11->TabIndex = 12;
@@ -1821,7 +2022,7 @@ namespace Timelapse {
 			// 
 			this->label10->AutoSize = true;
 			this->label10->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
-			this->label10->Location = System::Drawing::Point(405, 188);
+			this->label10->Location = System::Drawing::Point(450, 179);
 			this->label10->Name = L"label10";
 			this->label10->Size = System::Drawing::Size(50, 13);
 			this->label10->TabIndex = 11;
@@ -1834,7 +2035,7 @@ namespace Timelapse {
 			// 
 			this->label9->AutoSize = true;
 			this->label9->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
-			this->label9->Location = System::Drawing::Point(405, 173);
+			this->label9->Location = System::Drawing::Point(450, 164);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(39, 13);
 			this->label9->TabIndex = 10;
@@ -1847,7 +2048,7 @@ namespace Timelapse {
 			// 
 			this->label8->AutoSize = true;
 			this->label8->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
-			this->label8->Location = System::Drawing::Point(405, 138);
+			this->label8->Location = System::Drawing::Point(450, 129);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(29, 13);
 			this->label8->TabIndex = 9;
@@ -1860,7 +2061,7 @@ namespace Timelapse {
 			// 
 			this->label7->AutoSize = true;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
-			this->label7->Location = System::Drawing::Point(405, 123);
+			this->label7->Location = System::Drawing::Point(450, 114);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(25, 13);
 			this->label7->TabIndex = 8;
@@ -1873,7 +2074,7 @@ namespace Timelapse {
 			// 
 			this->label6->AutoSize = true;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
-			this->label6->Location = System::Drawing::Point(405, 108);
+			this->label6->Location = System::Drawing::Point(450, 99);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(24, 13);
 			this->label6->TabIndex = 7;
@@ -1886,7 +2087,7 @@ namespace Timelapse {
 			// 
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
-			this->label5->Location = System::Drawing::Point(405, 78);
+			this->label5->Location = System::Drawing::Point(450, 69);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(39, 13);
 			this->label5->TabIndex = 6;
@@ -1899,7 +2100,7 @@ namespace Timelapse {
 			// 
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
-			this->label4->Location = System::Drawing::Point(405, 63);
+			this->label4->Location = System::Drawing::Point(450, 54);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(22, 13);
 			this->label4->TabIndex = 5;
@@ -1913,7 +2114,7 @@ namespace Timelapse {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(401, 39);
+			this->label3->Location = System::Drawing::Point(446, 30);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(53, 25);
 			this->label3->TabIndex = 4;
@@ -1933,10 +2134,10 @@ namespace Timelapse {
 			this->tabControl1->Controls->Add(this->tabPage8);
 			this->tabControl1->Controls->Add(this->tabPage9);
 			this->tabControl1->ForeColor = System::Drawing::Color::White;
-			this->tabControl1->Location = System::Drawing::Point(2, 29);
+			this->tabControl1->Location = System::Drawing::Point(1, 29);
 			this->tabControl1->Name = L"tabControl1";
 			this->tabControl1->SelectedIndex = 0;
-			this->tabControl1->Size = System::Drawing::Size(398, 411);
+			this->tabControl1->Size = System::Drawing::Size(443, 428);
 			this->tabControl1->TabIndex = 2;
 			// 
 			// tabPage1
@@ -1949,7 +2150,7 @@ namespace Timelapse {
 			this->tabPage1->Location = System::Drawing::Point(4, 22);
 			this->tabPage1->Name = L"tabPage1";
 			this->tabPage1->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage1->Size = System::Drawing::Size(390, 385);
+			this->tabPage1->Size = System::Drawing::Size(435, 402);
 			this->tabPage1->TabIndex = 0;
 			this->tabPage1->Text = L"Main";
 			// 
@@ -1957,7 +2158,7 @@ namespace Timelapse {
 			// 
 			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(6, 6);
+			this->pictureBox1->Location = System::Drawing::Point(27, 6);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(379, 89);
 			this->pictureBox1->TabIndex = 0;
@@ -1971,10 +2172,10 @@ namespace Timelapse {
 			this->tabControl2->Controls->Add(this->tabPage3);
 			this->tabControl2->Controls->Add(this->tabPage17);
 			this->tabControl2->Controls->Add(this->tabPage4);
-			this->tabControl2->Location = System::Drawing::Point(15, 101);
+			this->tabControl2->Location = System::Drawing::Point(6, 101);
 			this->tabControl2->Name = L"tabControl2";
 			this->tabControl2->SelectedIndex = 0;
-			this->tabControl2->Size = System::Drawing::Size(361, 265);
+			this->tabControl2->Size = System::Drawing::Size(422, 295);
 			this->tabControl2->TabIndex = 0;
 			// 
 			// tabPage3
@@ -1986,7 +2187,7 @@ namespace Timelapse {
 			this->tabPage3->Name = L"tabPage3";
 			this->tabPage3->Padding = System::Windows::Forms::Padding(3);
 			this->tabPage3->RightToLeft = System::Windows::Forms::RightToLeft::No;
-			this->tabPage3->Size = System::Drawing::Size(353, 239);
+			this->tabPage3->Size = System::Drawing::Size(414, 269);
 			this->tabPage3->TabIndex = 0;
 			this->tabPage3->Text = L"Log";
 			// 
@@ -2000,7 +2201,7 @@ namespace Timelapse {
 			this->lbConsoleLog->Location = System::Drawing::Point(3, 3);
 			this->lbConsoleLog->Name = L"lbConsoleLog";
 			this->lbConsoleLog->SelectionMode = System::Windows::Forms::SelectionMode::MultiExtended;
-			this->lbConsoleLog->Size = System::Drawing::Size(347, 233);
+			this->lbConsoleLog->Size = System::Drawing::Size(408, 263);
 			this->lbConsoleLog->TabIndex = 1;
 			this->lbConsoleLog->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MainForm::lbConsoleLog_KeyDown);
 			// 
@@ -2013,7 +2214,7 @@ namespace Timelapse {
 			this->tabPage17->Controls->Add(this->cbAutoLogin);
 			this->tabPage17->Location = System::Drawing::Point(4, 22);
 			this->tabPage17->Name = L"tabPage17";
-			this->tabPage17->Size = System::Drawing::Size(353, 239);
+			this->tabPage17->Size = System::Drawing::Size(414, 269);
 			this->tabPage17->TabIndex = 2;
 			this->tabPage17->Text = L"Auto Login";
 			// 
@@ -2204,7 +2405,7 @@ namespace Timelapse {
 			this->tabPage4->Location = System::Drawing::Point(4, 22);
 			this->tabPage4->Name = L"tabPage4";
 			this->tabPage4->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage4->Size = System::Drawing::Size(353, 239);
+			this->tabPage4->Size = System::Drawing::Size(414, 269);
 			this->tabPage4->TabIndex = 1;
 			this->tabPage4->Text = L"Options";
 			// 
@@ -2214,7 +2415,7 @@ namespace Timelapse {
 			this->transparencyTrackBar->Maximum = 100;
 			this->transparencyTrackBar->Minimum = 50;
 			this->transparencyTrackBar->Name = L"transparencyTrackBar";
-			this->transparencyTrackBar->Size = System::Drawing::Size(257, 45);
+			this->transparencyTrackBar->Size = System::Drawing::Size(257, 42);
 			this->transparencyTrackBar->TabIndex = 1;
 			this->transparencyTrackBar->TickStyle = System::Windows::Forms::TickStyle::None;
 			this->transparencyTrackBar->Value = 100;
@@ -2239,7 +2440,7 @@ namespace Timelapse {
 			this->tabPage2->Location = System::Drawing::Point(4, 22);
 			this->tabPage2->Name = L"tabPage2";
 			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage2->Size = System::Drawing::Size(390, 385);
+			this->tabPage2->Size = System::Drawing::Size(435, 402);
 			this->tabPage2->TabIndex = 1;
 			this->tabPage2->Text = L"Bots";
 			// 
@@ -2248,10 +2449,10 @@ namespace Timelapse {
 			this->tabControl3->Controls->Add(this->tabPage11);
 			this->tabControl3->Controls->Add(this->tabPage12);
 			this->tabControl3->Controls->Add(this->tabPage10);
-			this->tabControl3->Location = System::Drawing::Point(-6, 151);
+			this->tabControl3->Location = System::Drawing::Point(6, 151);
 			this->tabControl3->Name = L"tabControl3";
 			this->tabControl3->SelectedIndex = 0;
-			this->tabControl3->Size = System::Drawing::Size(402, 238);
+			this->tabControl3->Size = System::Drawing::Size(426, 245);
 			this->tabControl3->TabIndex = 10;
 			// 
 			// tabPage11
@@ -2267,7 +2468,7 @@ namespace Timelapse {
 			this->tabPage11->Location = System::Drawing::Point(4, 22);
 			this->tabPage11->Name = L"tabPage11";
 			this->tabPage11->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage11->Size = System::Drawing::Size(394, 212);
+			this->tabPage11->Size = System::Drawing::Size(418, 219);
 			this->tabPage11->TabIndex = 1;
 			this->tabPage11->Text = L"Auto Buff";
 			// 
@@ -2275,7 +2476,7 @@ namespace Timelapse {
 			// 
 			this->bBuffEnableAll->FlatAppearance->BorderColor = System::Drawing::Color::Gray;
 			this->bBuffEnableAll->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->bBuffEnableAll->Location = System::Drawing::Point(265, 158);
+			this->bBuffEnableAll->Location = System::Drawing::Point(296, 158);
 			this->bBuffEnableAll->Name = L"bBuffEnableAll";
 			this->bBuffEnableAll->Size = System::Drawing::Size(124, 24);
 			this->bBuffEnableAll->TabIndex = 15;
@@ -2287,7 +2488,7 @@ namespace Timelapse {
 			// 
 			this->bBuffDisableAll->FlatAppearance->BorderColor = System::Drawing::Color::Gray;
 			this->bBuffDisableAll->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->bBuffDisableAll->Location = System::Drawing::Point(265, 185);
+			this->bBuffDisableAll->Location = System::Drawing::Point(296, 185);
 			this->bBuffDisableAll->Name = L"bBuffDisableAll";
 			this->bBuffDisableAll->Size = System::Drawing::Size(124, 24);
 			this->bBuffDisableAll->TabIndex = 14;
@@ -2328,7 +2529,7 @@ namespace Timelapse {
 			this->panel5->Controls->Add(this->label40);
 			this->panel5->Controls->Add(this->label41);
 			this->panel5->Controls->Add(this->comboBuffKey);
-			this->panel5->Location = System::Drawing::Point(265, 4);
+			this->panel5->Location = System::Drawing::Point(296, 6);
 			this->panel5->Name = L"panel5";
 			this->panel5->Size = System::Drawing::Size(124, 118);
 			this->panel5->TabIndex = 5;
@@ -2399,9 +2600,11 @@ namespace Timelapse {
 			this->comboBuffKey->ForeColor = System::Drawing::Color::White;
 			this->comboBuffKey->FormattingEnabled = true;
 			this->comboBuffKey->Items->AddRange(gcnew cli::array< System::Object^  >(46) {
-				L" Shift", L" Control", L" Alt", L" Space", L" Insert", L" Delete", L" Home", L" End", L" Page Up", L" Page Down",
-				L" A", L" B", L" C", L" D", L" E", L" F", L" G", L" H", L" I", L" J", L" K", L" L", L" M", L" N", L" O", L" P", L" Q", L" R", L" S", L" T", L" U", L" V", L" W", L" X", L" Y", L" Z",
-				L" 0", L" 1", L" 2", L" 3", L" 4", L" 5", L" 6", L" 7", L" 8", L" 9" });
+				L" Shift", L" Control", L" Alt", L" Space",
+					L" Insert", L" Delete", L" Home", L" End", L" Page Up", L" Page Down", L" A", L" B", L" C", L" D", L" E", L" F", L" G", L" H",
+					L" I", L" J", L" K", L" L", L" M", L" N", L" O", L" P", L" Q", L" R", L" S", L" T", L" U", L" V", L" W", L" X", L" Y", L" Z",
+					L" 0", L" 1", L" 2", L" 3", L" 4", L" 5", L" 6", L" 7", L" 8", L" 9"
+			});
 			this->comboBuffKey->Location = System::Drawing::Point(5, 61);
 			this->comboBuffKey->Name = L"comboBuffKey";
 			this->comboBuffKey->RightToLeft = System::Windows::Forms::RightToLeft::No;
@@ -2417,13 +2620,14 @@ namespace Timelapse {
 			this->lvBuff->CheckBoxes = true;
 			this->lvBuff->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(3) {
 				this->lvBuffHeaderName, this->lvBuffHeaderKey,
-					this->lvBuffHeaderInterval });
+					this->lvBuffHeaderInterval
+			});
 			this->lvBuff->ForeColor = System::Drawing::Color::White;
 			this->lvBuff->FullRowSelect = true;
 			this->lvBuff->HeaderStyle = System::Windows::Forms::ColumnHeaderStyle::Nonclickable;
 			this->lvBuff->Location = System::Drawing::Point(6, 4);
 			this->lvBuff->Name = L"lvBuff";
-			this->lvBuff->Size = System::Drawing::Size(257, 178);
+			this->lvBuff->Size = System::Drawing::Size(287, 178);
 			this->lvBuff->TabIndex = 0;
 			this->lvBuff->UseCompatibleStateImageBehavior = false;
 			this->lvBuff->View = System::Windows::Forms::View::Details;
@@ -2431,12 +2635,13 @@ namespace Timelapse {
 			// lvBuffHeaderName
 			// 
 			this->lvBuffHeaderName->Text = L"Name";
-			this->lvBuffHeaderName->Width = 100;
+			this->lvBuffHeaderName->Width = 121;
 			// 
 			// lvBuffHeaderKey
 			// 
 			this->lvBuffHeaderKey->DisplayIndex = 2;
 			this->lvBuffHeaderKey->Text = L"Key";
+			this->lvBuffHeaderKey->Width = 84;
 			// 
 			// lvBuffHeaderInterval
 			// 
@@ -2455,7 +2660,7 @@ namespace Timelapse {
 			this->tabPage12->Location = System::Drawing::Point(4, 22);
 			this->tabPage12->Name = L"tabPage12";
 			this->tabPage12->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage12->Size = System::Drawing::Size(394, 212);
+			this->tabPage12->Size = System::Drawing::Size(421, 219);
 			this->tabPage12->TabIndex = 2;
 			this->tabPage12->Text = L"Auto CC/CS";
 			// 
@@ -2551,7 +2756,9 @@ namespace Timelapse {
 			this->comboChannelKey->ForeColor = System::Drawing::Color::White;
 			this->comboChannelKey->FormattingEnabled = true;
 			this->comboChannelKey->Items->AddRange(gcnew cli::array< System::Object^  >(20) {
-				L" 1", L" 2", L" 3", L" 4", L" 5", L" 6", L" 7", L" 8", L" 9", L" 10", L" 11", L" 12", L" 13", L" 14", L" 15", L" 16", L" 17", L" 18", L" 19", L" 20" });
+				L" 1", L" 2", L" 3", L" 4", L" 5", L" 6",
+					L" 7", L" 8", L" 9", L" 10", L" 11", L" 12", L" 13", L" 14", L" 15", L" 16", L" 17", L" 18", L" 19", L" 20"
+			});
 			this->comboChannelKey->Location = System::Drawing::Point(65, 3);
 			this->comboChannelKey->Name = L"comboChannelKey";
 			this->comboChannelKey->RightToLeft = System::Windows::Forms::RightToLeft::No;
@@ -2792,7 +2999,7 @@ namespace Timelapse {
 			this->tabPage10->Location = System::Drawing::Point(4, 22);
 			this->tabPage10->Name = L"tabPage10";
 			this->tabPage10->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage10->Size = System::Drawing::Size(394, 212);
+			this->tabPage10->Size = System::Drawing::Size(421, 219);
 			this->tabPage10->TabIndex = 3;
 			this->tabPage10->Text = L"Auto Sell";
 			// 
@@ -2846,7 +3053,7 @@ namespace Timelapse {
 			this->panel2->Controls->Add(this->cbMP);
 			this->panel2->Location = System::Drawing::Point(6, 6);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(378, 139);
+			this->panel2->Size = System::Drawing::Size(422, 139);
 			this->panel2->TabIndex = 7;
 			// 
 			// textBox2
@@ -2855,7 +3062,7 @@ namespace Timelapse {
 				static_cast<System::Int32>(static_cast<System::Byte>(35)));
 			this->textBox2->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->textBox2->ForeColor = System::Drawing::Color::White;
-			this->textBox2->Location = System::Drawing::Point(224, 28);
+			this->textBox2->Location = System::Drawing::Point(271, 28);
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(57, 21);
 			this->textBox2->TabIndex = 14;
@@ -2868,7 +3075,7 @@ namespace Timelapse {
 				static_cast<System::Int32>(static_cast<System::Byte>(35)));
 			this->textBox1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->textBox1->ForeColor = System::Drawing::Color::White;
-			this->textBox1->Location = System::Drawing::Point(224, 3);
+			this->textBox1->Location = System::Drawing::Point(271, 3);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(57, 21);
 			this->textBox1->TabIndex = 13;
@@ -2879,7 +3086,7 @@ namespace Timelapse {
 			// 
 			this->label93->AutoSize = true;
 			this->label93->BackColor = System::Drawing::Color::Transparent;
-			this->label93->Location = System::Drawing::Point(165, 30);
+			this->label93->Location = System::Drawing::Point(212, 30);
 			this->label93->Name = L"label93";
 			this->label93->Size = System::Drawing::Size(59, 13);
 			this->label93->TabIndex = 12;
@@ -2889,7 +3096,7 @@ namespace Timelapse {
 			// 
 			this->label91->AutoSize = true;
 			this->label91->BackColor = System::Drawing::Color::Transparent;
-			this->label91->Location = System::Drawing::Point(165, 5);
+			this->label91->Location = System::Drawing::Point(212, 5);
 			this->label91->Name = L"label91";
 			this->label91->Size = System::Drawing::Size(59, 13);
 			this->label91->TabIndex = 11;
@@ -2901,9 +3108,9 @@ namespace Timelapse {
 				static_cast<System::Int32>(static_cast<System::Byte>(35)));
 			this->tbLootItem->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->tbLootItem->ForeColor = System::Drawing::Color::White;
-			this->tbLootItem->Location = System::Drawing::Point(132, 78);
+			this->tbLootItem->Location = System::Drawing::Point(148, 76);
 			this->tbLootItem->Name = L"tbLootItem";
-			this->tbLootItem->Size = System::Drawing::Size(28, 21);
+			this->tbLootItem->Size = System::Drawing::Size(58, 21);
 			this->tbLootItem->TabIndex = 9;
 			this->tbLootItem->Text = L"0";
 			this->tbLootItem->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -2915,7 +3122,7 @@ namespace Timelapse {
 				static_cast<System::Int32>(static_cast<System::Byte>(35)));
 			this->tbAttackInterval->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->tbAttackInterval->ForeColor = System::Drawing::Color::White;
-			this->tbAttackInterval->Location = System::Drawing::Point(224, 53);
+			this->tbAttackInterval->Location = System::Drawing::Point(271, 53);
 			this->tbAttackInterval->Name = L"tbAttackInterval";
 			this->tbAttackInterval->Size = System::Drawing::Size(57, 21);
 			this->tbAttackInterval->TabIndex = 3;
@@ -2929,7 +3136,7 @@ namespace Timelapse {
 				static_cast<System::Int32>(static_cast<System::Byte>(35)));
 			this->tbLootInterval->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->tbLootInterval->ForeColor = System::Drawing::Color::White;
-			this->tbLootInterval->Location = System::Drawing::Point(224, 78);
+			this->tbLootInterval->Location = System::Drawing::Point(271, 78);
 			this->tbLootInterval->Name = L"tbLootInterval";
 			this->tbLootInterval->Size = System::Drawing::Size(57, 21);
 			this->tbLootInterval->TabIndex = 3;
@@ -2943,9 +3150,9 @@ namespace Timelapse {
 				static_cast<System::Int32>(static_cast<System::Byte>(35)));
 			this->tbAttackMob->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->tbAttackMob->ForeColor = System::Drawing::Color::White;
-			this->tbAttackMob->Location = System::Drawing::Point(132, 53);
+			this->tbAttackMob->Location = System::Drawing::Point(148, 51);
 			this->tbAttackMob->Name = L"tbAttackMob";
-			this->tbAttackMob->Size = System::Drawing::Size(28, 21);
+			this->tbAttackMob->Size = System::Drawing::Size(58, 21);
 			this->tbAttackMob->TabIndex = 9;
 			this->tbAttackMob->Text = L"0";
 			this->tbAttackMob->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -2955,7 +3162,7 @@ namespace Timelapse {
 			// 
 			this->label31->AutoSize = true;
 			this->label31->BackColor = System::Drawing::Color::Transparent;
-			this->label31->Location = System::Drawing::Point(165, 80);
+			this->label31->Location = System::Drawing::Point(212, 80);
 			this->label31->Name = L"label31";
 			this->label31->Size = System::Drawing::Size(59, 13);
 			this->label31->TabIndex = 7;
@@ -2964,7 +3171,7 @@ namespace Timelapse {
 			// label29
 			// 
 			this->label29->AutoSize = true;
-			this->label29->Location = System::Drawing::Point(85, 80);
+			this->label29->Location = System::Drawing::Point(97, 78);
 			this->label29->Name = L"label29";
 			this->label29->Size = System::Drawing::Size(45, 13);
 			this->label29->TabIndex = 10;
@@ -2974,7 +3181,7 @@ namespace Timelapse {
 			// 
 			this->label28->AutoSize = true;
 			this->label28->BackColor = System::Drawing::Color::Transparent;
-			this->label28->Location = System::Drawing::Point(165, 55);
+			this->label28->Location = System::Drawing::Point(212, 55);
 			this->label28->Name = L"label28";
 			this->label28->Size = System::Drawing::Size(59, 13);
 			this->label28->TabIndex = 7;
@@ -2983,7 +3190,7 @@ namespace Timelapse {
 			// label27
 			// 
 			this->label27->AutoSize = true;
-			this->label27->Location = System::Drawing::Point(67, 30);
+			this->label27->Location = System::Drawing::Point(97, 28);
 			this->label27->Name = L"label27";
 			this->label27->Size = System::Drawing::Size(32, 13);
 			this->label27->TabIndex = 8;
@@ -3006,7 +3213,7 @@ namespace Timelapse {
 			// label30
 			// 
 			this->label30->AutoSize = true;
-			this->label30->Location = System::Drawing::Point(87, 55);
+			this->label30->Location = System::Drawing::Point(97, 53);
 			this->label30->Name = L"label30";
 			this->label30->Size = System::Drawing::Size(43, 13);
 			this->label30->TabIndex = 10;
@@ -3020,10 +3227,12 @@ namespace Timelapse {
 			this->comboLootKey->ForeColor = System::Drawing::Color::White;
 			this->comboLootKey->FormattingEnabled = true;
 			this->comboLootKey->Items->AddRange(gcnew cli::array< System::Object^  >(46) {
-				L" Shift", L" Control", L" Alt", L" Space", L" Insert", L" Delete", L" Home", L" End", L" Page Up", L" Page Down", 
-				L" A", L" B", L" C", L" D", L" E", L" F", L" G", L" H", L" I", L" J", L" K", L" L", L" M", L" N", L" O", L" P", L" Q", L" R", L" S", L" T", L" U", L" V", L" W", L" X", L" Y", L" Z",
-				L" 0", L" 1", L" 2", L" 3", L" 4", L" 5", L" 6", L" 7", L" 8", L" 9" });
-			this->comboLootKey->Location = System::Drawing::Point(287, 78);
+				L" Shift", L" Control", L" Alt", L" Space",
+					L" Insert", L" Delete", L" Home", L" End", L" Page Up", L" Page Down", L" A", L" B", L" C", L" D", L" E", L" F", L" G", L" H",
+					L" I", L" J", L" K", L" L", L" M", L" N", L" O", L" P", L" Q", L" R", L" S", L" T", L" U", L" V", L" W", L" X", L" Y", L" Z",
+					L" 0", L" 1", L" 2", L" 3", L" 4", L" 5", L" 6", L" 7", L" 8", L" 9"
+			});
+			this->comboLootKey->Location = System::Drawing::Point(334, 78);
 			this->comboLootKey->Name = L"comboLootKey";
 			this->comboLootKey->RightToLeft = System::Windows::Forms::RightToLeft::No;
 			this->comboLootKey->Size = System::Drawing::Size(83, 21);
@@ -3034,7 +3243,7 @@ namespace Timelapse {
 			// label26
 			// 
 			this->label26->AutoSize = true;
-			this->label26->Location = System::Drawing::Point(67, 5);
+			this->label26->Location = System::Drawing::Point(97, 6);
 			this->label26->Name = L"label26";
 			this->label26->Size = System::Drawing::Size(31, 13);
 			this->label26->TabIndex = 7;
@@ -3048,10 +3257,12 @@ namespace Timelapse {
 			this->comboAttackKey->ForeColor = System::Drawing::Color::White;
 			this->comboAttackKey->FormattingEnabled = true;
 			this->comboAttackKey->Items->AddRange(gcnew cli::array< System::Object^  >(46) {
-				L" Shift", L" Control", L" Alt", L" Space", L" Insert", L" Delete", L" Home", L" End", L" Page Up", L" Page Down",
-				L" A", L" B", L" C", L" D", L" E", L" F", L" G", L" H", L" I", L" J", L" K", L" L", L" M", L" N", L" O", L" P", L" Q", L" R", L" S", L" T", L" U", L" V", L" W", L" X", L" Y", L" Z", 
-				L" 0", L" 1", L" 2", L" 3", L" 4", L" 5", L" 6", L" 7", L" 8", L" 9" });
-			this->comboAttackKey->Location = System::Drawing::Point(287, 53);
+				L" Shift", L" Control", L" Alt", L" Space",
+					L" Insert", L" Delete", L" Home", L" End", L" Page Up", L" Page Down", L" A", L" B", L" C", L" D", L" E", L" F", L" G", L" H",
+					L" I", L" J", L" K", L" L", L" M", L" N", L" O", L" P", L" Q", L" R", L" S", L" T", L" U", L" V", L" W", L" X", L" Y", L" Z",
+					L" 0", L" 1", L" 2", L" 3", L" 4", L" 5", L" 6", L" 7", L" 8", L" 9"
+			});
+			this->comboAttackKey->Location = System::Drawing::Point(334, 53);
 			this->comboAttackKey->Name = L"comboAttackKey";
 			this->comboAttackKey->RightToLeft = System::Windows::Forms::RightToLeft::No;
 			this->comboAttackKey->Size = System::Drawing::Size(83, 21);
@@ -3067,10 +3278,12 @@ namespace Timelapse {
 			this->comboMPKey->ForeColor = System::Drawing::Color::White;
 			this->comboMPKey->FormattingEnabled = true;
 			this->comboMPKey->Items->AddRange(gcnew cli::array< System::Object^  >(46) {
-				L" Shift", L" Control", L" Alt", L" Space", L" Insert", L" Delete", L" Home", L" End", L" Page Up", L" Page Down", 
-				L" A", L" B", L" C", L" D", L" E", L" F", L" G", L" H", L" I", L" J",L" K", L" L", L" M", L" N", L" O", L" P", L" Q", L" R", L" S", L" T", L" U", L" V", L" W", L" X", L" Y", L" Z",
-				L" 0", L" 1", L" 2", L" 3", L" 4", L" 5", L" 6", L" 7", L" 8", L" 9" });
-			this->comboMPKey->Location = System::Drawing::Point(287, 28);
+				L" Shift", L" Control", L" Alt", L" Space", L" Insert",
+					L" Delete", L" Home", L" End", L" Page Up", L" Page Down", L" A", L" B", L" C", L" D", L" E", L" F", L" G", L" H", L" I", L" J",
+					L" K", L" L", L" M", L" N", L" O", L" P", L" Q", L" R", L" S", L" T", L" U", L" V", L" W", L" X", L" Y", L" Z", L" 0", L" 1",
+					L" 2", L" 3", L" 4", L" 5", L" 6", L" 7", L" 8", L" 9"
+			});
+			this->comboMPKey->Location = System::Drawing::Point(334, 28);
 			this->comboMPKey->Name = L"comboMPKey";
 			this->comboMPKey->Size = System::Drawing::Size(83, 21);
 			this->comboMPKey->TabIndex = 6;
@@ -3099,10 +3312,12 @@ namespace Timelapse {
 			this->comboHPKey->ForeColor = System::Drawing::Color::White;
 			this->comboHPKey->FormattingEnabled = true;
 			this->comboHPKey->Items->AddRange(gcnew cli::array< System::Object^  >(46) {
-				L" Shift", L" Control", L" Alt", L" Space", L" Insert", L" Delete", L" Home", L" End", L" Page Up", L" Page Down",
-				L" A", L" B", L" C", L" D", L" E", L" F", L" G", L" H", L" I", L" J",L" K", L" L", L" M", L" N", L" O", L" P", L" Q", L" R", L" S", L" T", L" U", L" V", L" W", L" X", L" Y", L" Z",
-				L" 0", L" 1", L" 2", L" 3", L" 4", L" 5", L" 6", L" 7", L" 8", L" 9" });
-			this->comboHPKey->Location = System::Drawing::Point(287, 3);
+				L" Shift", L" Control", L" Alt", L" Space", L" Insert",
+					L" Delete", L" Home", L" End", L" Page Up", L" Page Down", L" A", L" B", L" C", L" D", L" E", L" F", L" G", L" H", L" I", L" J",
+					L" K", L" L", L" M", L" N", L" O", L" P", L" Q", L" R", L" S", L" T", L" U", L" V", L" W", L" X", L" Y", L" Z", L" 0", L" 1",
+					L" 2", L" 3", L" 4", L" 5", L" 6", L" 7", L" 8", L" 9"
+			});
+			this->comboHPKey->Location = System::Drawing::Point(334, 3);
 			this->comboHPKey->Name = L"comboHPKey";
 			this->comboHPKey->RightToLeft = System::Windows::Forms::RightToLeft::No;
 			this->comboHPKey->Size = System::Drawing::Size(83, 21);
@@ -3116,7 +3331,7 @@ namespace Timelapse {
 				static_cast<System::Int32>(static_cast<System::Byte>(35)));
 			this->tbMP->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->tbMP->ForeColor = System::Drawing::Color::White;
-			this->tbMP->Location = System::Drawing::Point(102, 28);
+			this->tbMP->Location = System::Drawing::Point(148, 26);
 			this->tbMP->Name = L"tbMP";
 			this->tbMP->Size = System::Drawing::Size(58, 21);
 			this->tbMP->TabIndex = 4;
@@ -3130,7 +3345,7 @@ namespace Timelapse {
 				static_cast<System::Int32>(static_cast<System::Byte>(35)));
 			this->tbHP->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->tbHP->ForeColor = System::Drawing::Color::White;
-			this->tbHP->Location = System::Drawing::Point(102, 3);
+			this->tbHP->Location = System::Drawing::Point(148, 3);
 			this->tbHP->Name = L"tbHP";
 			this->tbHP->Size = System::Drawing::Size(58, 21);
 			this->tbHP->TabIndex = 3;
@@ -3179,7 +3394,7 @@ namespace Timelapse {
 			this->tabPage5->Location = System::Drawing::Point(4, 22);
 			this->tabPage5->Name = L"tabPage5";
 			this->tabPage5->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage5->Size = System::Drawing::Size(390, 385);
+			this->tabPage5->Size = System::Drawing::Size(435, 402);
 			this->tabPage5->TabIndex = 2;
 			this->tabPage5->Text = L"Hacks I";
 			// 
@@ -3337,7 +3552,7 @@ namespace Timelapse {
 			this->groupBox4->ForeColor = System::Drawing::Color::WhiteSmoke;
 			this->groupBox4->Location = System::Drawing::Point(6, 313);
 			this->groupBox4->Name = L"groupBox4";
-			this->groupBox4->Size = System::Drawing::Size(378, 66);
+			this->groupBox4->Size = System::Drawing::Size(378, 83);
 			this->groupBox4->TabIndex = 26;
 			this->groupBox4->TabStop = false;
 			this->groupBox4->Text = L"Movement Hacks";
@@ -3915,7 +4130,7 @@ namespace Timelapse {
 			this->tabPage20->Location = System::Drawing::Point(4, 22);
 			this->tabPage20->Name = L"tabPage20";
 			this->tabPage20->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage20->Size = System::Drawing::Size(390, 385);
+			this->tabPage20->Size = System::Drawing::Size(435, 402);
 			this->tabPage20->TabIndex = 7;
 			this->tabPage20->Text = L"Hacks II";
 			// 
@@ -3929,7 +4144,7 @@ namespace Timelapse {
 			this->panel27->Controls->Add(this->bSpawnControlDelete);
 			this->panel27->Location = System::Drawing::Point(4, 195);
 			this->panel27->Name = L"panel27";
-			this->panel27->Size = System::Drawing::Size(383, 185);
+			this->panel27->Size = System::Drawing::Size(425, 185);
 			this->panel27->TabIndex = 23;
 			// 
 			// bSpawnControl
@@ -4115,17 +4330,22 @@ namespace Timelapse {
 			// panel26
 			// 
 			this->panel26->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->panel26->Controls->Add(this->bTeleportGetCurrentLocation);
 			this->panel26->Controls->Add(this->label42);
+			this->panel26->Controls->Add(this->label64);
+			this->panel26->Controls->Add(this->tbTeleportX);
 			this->panel26->Controls->Add(this->tbTeleportLoopDelay);
+			this->panel26->Controls->Add(this->bTeleportAdd);
 			this->panel26->Controls->Add(this->label86);
+			this->panel26->Controls->Add(this->label63);
 			this->panel26->Controls->Add(this->bTeleportLoop);
+			this->panel26->Controls->Add(this->tbTeleportY);
 			this->panel26->Controls->Add(this->bTeleportDelete);
 			this->panel26->Controls->Add(this->bTeleport);
 			this->panel26->Controls->Add(this->lvTeleport);
-			this->panel26->Controls->Add(this->panel18);
 			this->panel26->Location = System::Drawing::Point(4, 6);
 			this->panel26->Name = L"panel26";
-			this->panel26->Size = System::Drawing::Size(383, 185);
+			this->panel26->Size = System::Drawing::Size(425, 185);
 			this->panel26->TabIndex = 22;
 			// 
 			// label42
@@ -4225,25 +4445,11 @@ namespace Timelapse {
 			this->columnHeader2->Text = L"Y:";
 			this->columnHeader2->Width = 90;
 			// 
-			// panel18
-			// 
-			this->panel18->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->panel18->Controls->Add(this->bTeleportGetCurrentLocation);
-			this->panel18->Controls->Add(this->label64);
-			this->panel18->Controls->Add(this->tbTeleportX);
-			this->panel18->Controls->Add(this->bTeleportAdd);
-			this->panel18->Controls->Add(this->label63);
-			this->panel18->Controls->Add(this->tbTeleportY);
-			this->panel18->Location = System::Drawing::Point(204, 19);
-			this->panel18->Name = L"panel18";
-			this->panel18->Size = System::Drawing::Size(173, 131);
-			this->panel18->TabIndex = 35;
-			// 
 			// bTeleportGetCurrentLocation
 			// 
 			this->bTeleportGetCurrentLocation->FlatAppearance->BorderColor = System::Drawing::Color::Gray;
 			this->bTeleportGetCurrentLocation->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->bTeleportGetCurrentLocation->Location = System::Drawing::Point(7, 50);
+			this->bTeleportGetCurrentLocation->Location = System::Drawing::Point(221, 35);
 			this->bTeleportGetCurrentLocation->Name = L"bTeleportGetCurrentLocation";
 			this->bTeleportGetCurrentLocation->Size = System::Drawing::Size(156, 25);
 			this->bTeleportGetCurrentLocation->TabIndex = 22;
@@ -4255,7 +4461,7 @@ namespace Timelapse {
 			// 
 			this->label64->AutoSize = true;
 			this->label64->BackColor = System::Drawing::Color::Transparent;
-			this->label64->Location = System::Drawing::Point(5, 18);
+			this->label64->Location = System::Drawing::Point(218, 77);
 			this->label64->Name = L"label64";
 			this->label64->Size = System::Drawing::Size(17, 13);
 			this->label64->TabIndex = 20;
@@ -4267,7 +4473,7 @@ namespace Timelapse {
 				static_cast<System::Int32>(static_cast<System::Byte>(35)));
 			this->tbTeleportX->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->tbTeleportX->ForeColor = System::Drawing::Color::White;
-			this->tbTeleportX->Location = System::Drawing::Point(26, 15);
+			this->tbTeleportX->Location = System::Drawing::Point(239, 74);
 			this->tbTeleportX->Name = L"tbTeleportX";
 			this->tbTeleportX->Size = System::Drawing::Size(55, 21);
 			this->tbTeleportX->TabIndex = 19;
@@ -4279,7 +4485,7 @@ namespace Timelapse {
 			// 
 			this->bTeleportAdd->FlatAppearance->BorderColor = System::Drawing::Color::Gray;
 			this->bTeleportAdd->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->bTeleportAdd->Location = System::Drawing::Point(7, 80);
+			this->bTeleportAdd->Location = System::Drawing::Point(221, 110);
 			this->bTeleportAdd->Name = L"bTeleportAdd";
 			this->bTeleportAdd->Size = System::Drawing::Size(156, 25);
 			this->bTeleportAdd->TabIndex = 24;
@@ -4291,7 +4497,7 @@ namespace Timelapse {
 			// 
 			this->label63->AutoSize = true;
 			this->label63->BackColor = System::Drawing::Color::Transparent;
-			this->label63->Location = System::Drawing::Point(87, 18);
+			this->label63->Location = System::Drawing::Point(300, 77);
 			this->label63->Name = L"label63";
 			this->label63->Size = System::Drawing::Size(17, 13);
 			this->label63->TabIndex = 23;
@@ -4303,7 +4509,7 @@ namespace Timelapse {
 				static_cast<System::Int32>(static_cast<System::Byte>(35)));
 			this->tbTeleportY->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->tbTeleportY->ForeColor = System::Drawing::Color::White;
-			this->tbTeleportY->Location = System::Drawing::Point(108, 15);
+			this->tbTeleportY->Location = System::Drawing::Point(321, 74);
 			this->tbTeleportY->Name = L"tbTeleportY";
 			this->tbTeleportY->Size = System::Drawing::Size(55, 21);
 			this->tbTeleportY->TabIndex = 21;
@@ -4323,7 +4529,7 @@ namespace Timelapse {
 			this->tabPage6->Controls->Add(this->panel14);
 			this->tabPage6->Location = System::Drawing::Point(4, 22);
 			this->tabPage6->Name = L"tabPage6";
-			this->tabPage6->Size = System::Drawing::Size(390, 385);
+			this->tabPage6->Size = System::Drawing::Size(435, 402);
 			this->tabPage6->TabIndex = 3;
 			this->tabPage6->Text = L"Vacs";
 			// 
@@ -5061,221 +5267,76 @@ namespace Timelapse {
 			// 
 			this->tabPage7->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
 				static_cast<System::Int32>(static_cast<System::Byte>(25)));
-			this->tabPage7->Controls->Add(this->panel21);
-			this->tabPage7->Controls->Add(this->panel20);
+			this->tabPage7->Controls->Add(this->tabControl4);
 			this->tabPage7->Location = System::Drawing::Point(4, 22);
 			this->tabPage7->Name = L"tabPage7";
-			this->tabPage7->Size = System::Drawing::Size(390, 385);
+			this->tabPage7->Size = System::Drawing::Size(435, 402);
 			this->tabPage7->TabIndex = 4;
 			this->tabPage7->Text = L"Filters";
 			// 
-			// panel21
+			// tabControl4
 			// 
-			this->panel21->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->panel21->Controls->Add(this->lbMobSearchLog);
-			this->panel21->Controls->Add(this->lbMobFilter);
-			this->panel21->Controls->Add(this->cbMobFilterLog);
-			this->panel21->Controls->Add(this->bMobSearchLogClear);
-			this->panel21->Controls->Add(this->rbMobFilterWhiteList);
-			this->panel21->Controls->Add(this->tbMobFilterSearch);
-			this->panel21->Controls->Add(this->rbMobFilterBlackList);
-			this->panel21->Controls->Add(this->label75);
-			this->panel21->Controls->Add(this->bMobFilterAdd);
-			this->panel21->Controls->Add(this->tbMobFilterID);
-			this->panel21->Controls->Add(this->label76);
-			this->panel21->Controls->Add(this->label77);
-			this->panel21->Controls->Add(this->bMobFilter);
-			this->panel21->Location = System::Drawing::Point(5, 195);
-			this->panel21->Name = L"panel21";
-			this->panel21->Size = System::Drawing::Size(381, 186);
-			this->panel21->TabIndex = 30;
+			this->tabControl4->Controls->Add(this->tabPage13);
+			this->tabControl4->Controls->Add(this->tabPage14);
+			this->tabControl4->Location = System::Drawing::Point(0, 1);
+			this->tabControl4->Name = L"tabControl4";
+			this->tabControl4->SelectedIndex = 0;
+			this->tabControl4->Size = System::Drawing::Size(431, 384);
+			this->tabControl4->TabIndex = 60;
 			// 
-			// lbMobSearchLog
+			// tabPage13
 			// 
-			this->lbMobSearchLog->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
+			this->tabPage13->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
 				static_cast<System::Int32>(static_cast<System::Byte>(25)));
-			this->lbMobSearchLog->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->lbMobSearchLog->ForeColor = System::Drawing::Color::White;
-			this->lbMobSearchLog->FormattingEnabled = true;
-			this->lbMobSearchLog->Location = System::Drawing::Point(194, 44);
-			this->lbMobSearchLog->Name = L"lbMobSearchLog";
-			this->lbMobSearchLog->Size = System::Drawing::Size(179, 80);
-			this->lbMobSearchLog->TabIndex = 53;
-			this->lbMobSearchLog->MouseDoubleClick += gcnew System::Windows::Forms::MouseEventHandler(this, &MainForm::lbMobSearchLog_MouseDoubleClick);
+			this->tabPage13->Controls->Add(this->bItemFilter);
+			this->tabPage13->Controls->Add(this->bItemSearchLogClear);
+			this->tabPage13->Controls->Add(this->lbItemSearchLog);
+			this->tabPage13->Controls->Add(this->tbItemFilterSearch);
+			this->tabPage13->Controls->Add(this->lbItemFilter);
+			this->tabPage13->Controls->Add(this->label74);
+			this->tabPage13->Controls->Add(this->cbItemFilterLog);
+			this->tabPage13->Controls->Add(this->tbItemFilterMesos);
+			this->tabPage13->Controls->Add(this->label73);
+			this->tabPage13->Controls->Add(this->label70);
+			this->tabPage13->Controls->Add(this->tbItemFilterID);
+			this->tabPage13->Controls->Add(this->bItemFilterAdd);
+			this->tabPage13->Controls->Add(this->rbItemFilterWhiteList);
+			this->tabPage13->Controls->Add(this->rbItemFilterBlackList);
+			this->tabPage13->Location = System::Drawing::Point(4, 22);
+			this->tabPage13->Name = L"tabPage13";
+			this->tabPage13->Padding = System::Windows::Forms::Padding(3);
+			this->tabPage13->Size = System::Drawing::Size(423, 358);
+			this->tabPage13->TabIndex = 0;
+			this->tabPage13->Text = L"ItemFilter";
 			// 
-			// lbMobFilter
+			// bItemFilter
 			// 
-			this->lbMobFilter->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
-				static_cast<System::Int32>(static_cast<System::Byte>(25)));
-			this->lbMobFilter->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->lbMobFilter->ForeColor = System::Drawing::Color::White;
-			this->lbMobFilter->FormattingEnabled = true;
-			this->lbMobFilter->Location = System::Drawing::Point(7, 8);
-			this->lbMobFilter->Name = L"lbMobFilter";
-			this->lbMobFilter->Size = System::Drawing::Size(180, 145);
-			this->lbMobFilter->TabIndex = 34;
-			this->lbMobFilter->MouseDoubleClick += gcnew System::Windows::Forms::MouseEventHandler(this, &MainForm::lbMobFilter_MouseDoubleClick);
-			// 
-			// cbMobFilterLog
-			// 
-			this->cbMobFilterLog->AutoSize = true;
-			this->cbMobFilterLog->FlatAppearance->BorderColor = System::Drawing::Color::Maroon;
-			this->cbMobFilterLog->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->cbMobFilterLog->ForeColor = System::Drawing::Color::White;
-			this->cbMobFilterLog->Location = System::Drawing::Point(194, 5);
-			this->cbMobFilterLog->Name = L"cbMobFilterLog";
-			this->cbMobFilterLog->Size = System::Drawing::Size(68, 17);
-			this->cbMobFilterLog->TabIndex = 33;
-			this->cbMobFilterLog->Text = L"Log Mobs";
-			this->cbMobFilterLog->UseVisualStyleBackColor = false;
-			this->cbMobFilterLog->CheckedChanged += gcnew System::EventHandler(this, &MainForm::cbMobFilterLog_CheckedChanged);
-			// 
-			// bMobSearchLogClear
-			// 
-			this->bMobSearchLogClear->FlatAppearance->BorderColor = System::Drawing::Color::Gray;
-			this->bMobSearchLogClear->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->bMobSearchLogClear->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->bItemFilter->FlatAppearance->BorderColor = System::Drawing::Color::Gray;
+			this->bItemFilter->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->bItemFilter->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->bMobSearchLogClear->Location = System::Drawing::Point(326, 129);
-			this->bMobSearchLogClear->Name = L"bMobSearchLogClear";
-			this->bMobSearchLogClear->Size = System::Drawing::Size(47, 23);
-			this->bMobSearchLogClear->TabIndex = 29;
-			this->bMobSearchLogClear->Text = L"Clear";
-			this->bMobSearchLogClear->UseVisualStyleBackColor = true;
-			this->bMobSearchLogClear->Click += gcnew System::EventHandler(this, &MainForm::bMobSearchLogClear_Click);
+			this->bItemFilter->ForeColor = System::Drawing::Color::Lime;
+			this->bItemFilter->Location = System::Drawing::Point(193, 167);
+			this->bItemFilter->Name = L"bItemFilter";
+			this->bItemFilter->Size = System::Drawing::Size(180, 23);
+			this->bItemFilter->TabIndex = 19;
+			this->bItemFilter->Text = L"Enable Item Filter";
+			this->bItemFilter->UseVisualStyleBackColor = true;
+			this->bItemFilter->Click += gcnew System::EventHandler(this, &MainForm::bItemFilter_Click);
 			// 
-			// rbMobFilterWhiteList
+			// bItemSearchLogClear
 			// 
-			this->rbMobFilterWhiteList->AutoSize = true;
-			this->rbMobFilterWhiteList->Checked = true;
-			this->rbMobFilterWhiteList->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->rbMobFilterWhiteList->Location = System::Drawing::Point(208, 26);
-			this->rbMobFilterWhiteList->Name = L"rbMobFilterWhiteList";
-			this->rbMobFilterWhiteList->Size = System::Drawing::Size(68, 17);
-			this->rbMobFilterWhiteList->TabIndex = 32;
-			this->rbMobFilterWhiteList->TabStop = true;
-			this->rbMobFilterWhiteList->Text = L"WhiteList";
-			this->rbMobFilterWhiteList->UseVisualStyleBackColor = true;
-			this->rbMobFilterWhiteList->CheckedChanged += gcnew System::EventHandler(this, &MainForm::rbMobFilterWhiteList_CheckedChanged);
-			// 
-			// tbMobFilterSearch
-			// 
-			this->tbMobFilterSearch->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(35)),
-				static_cast<System::Int32>(static_cast<System::Byte>(35)), static_cast<System::Int32>(static_cast<System::Byte>(35)));
-			this->tbMobFilterSearch->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->tbMobFilterSearch->ForeColor = System::Drawing::Color::White;
-			this->tbMobFilterSearch->Location = System::Drawing::Point(233, 130);
-			this->tbMobFilterSearch->Name = L"tbMobFilterSearch";
-			this->tbMobFilterSearch->Size = System::Drawing::Size(87, 21);
-			this->tbMobFilterSearch->TabIndex = 27;
-			this->tbMobFilterSearch->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			this->tbMobFilterSearch->TextChanged += gcnew System::EventHandler(this, &MainForm::tbMobFilterSearch_TextChanged);
-			// 
-			// rbMobFilterBlackList
-			// 
-			this->rbMobFilterBlackList->AutoSize = true;
-			this->rbMobFilterBlackList->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->rbMobFilterBlackList->Location = System::Drawing::Point(301, 26);
-			this->rbMobFilterBlackList->Name = L"rbMobFilterBlackList";
-			this->rbMobFilterBlackList->Size = System::Drawing::Size(64, 17);
-			this->rbMobFilterBlackList->TabIndex = 31;
-			this->rbMobFilterBlackList->Text = L"BlackList";
-			this->rbMobFilterBlackList->UseVisualStyleBackColor = false;
-			// 
-			// label75
-			// 
-			this->label75->AutoSize = true;
-			this->label75->Location = System::Drawing::Point(191, 134);
-			this->label75->Name = L"label75";
-			this->label75->Size = System::Drawing::Size(44, 13);
-			this->label75->TabIndex = 28;
-			this->label75->Text = L"Search:";
-			// 
-			// bMobFilterAdd
-			// 
-			this->bMobFilterAdd->FlatAppearance->BorderColor = System::Drawing::Color::Gray;
-			this->bMobFilterAdd->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->bMobFilterAdd->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->bItemSearchLogClear->FlatAppearance->BorderColor = System::Drawing::Color::Gray;
+			this->bItemSearchLogClear->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->bItemSearchLogClear->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->bMobFilterAdd->Location = System::Drawing::Point(151, 157);
-			this->bMobFilterAdd->Name = L"bMobFilterAdd";
-			this->bMobFilterAdd->Size = System::Drawing::Size(36, 23);
-			this->bMobFilterAdd->TabIndex = 26;
-			this->bMobFilterAdd->Text = L"Add";
-			this->bMobFilterAdd->UseVisualStyleBackColor = true;
-			this->bMobFilterAdd->Click += gcnew System::EventHandler(this, &MainForm::bMobFilterAdd_Click);
-			// 
-			// tbMobFilterID
-			// 
-			this->tbMobFilterID->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(35)), static_cast<System::Int32>(static_cast<System::Byte>(35)),
-				static_cast<System::Int32>(static_cast<System::Byte>(35)));
-			this->tbMobFilterID->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->tbMobFilterID->ForeColor = System::Drawing::Color::White;
-			this->tbMobFilterID->Location = System::Drawing::Point(65, 158);
-			this->tbMobFilterID->Name = L"tbMobFilterID";
-			this->tbMobFilterID->Size = System::Drawing::Size(81, 21);
-			this->tbMobFilterID->TabIndex = 24;
-			this->tbMobFilterID->Text = L"100101";
-			this->tbMobFilterID->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			this->tbMobFilterID->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainForm::tbMobFilterID_KeyPress);
-			// 
-			// label76
-			// 
-			this->label76->AutoSize = true;
-			this->label76->Location = System::Drawing::Point(6, 162);
-			this->label76->Name = L"label76";
-			this->label76->Size = System::Drawing::Size(59, 13);
-			this->label76->TabIndex = 25;
-			this->label76->Text = L"Add by ID:";
-			// 
-			// label77
-			// 
-			this->label77->AutoSize = true;
-			this->label77->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label77->ForeColor = System::Drawing::Color::Lime;
-			this->label77->Location = System::Drawing::Point(262, 7);
-			this->label77->Name = L"label77";
-			this->label77->Size = System::Drawing::Size(114, 13);
-			this->label77->TabIndex = 23;
-			this->label77->Text = L"Filters Mobs on Spawn";
-			this->label77->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// bMobFilter
-			// 
-			this->bMobFilter->FlatAppearance->BorderColor = System::Drawing::Color::Gray;
-			this->bMobFilter->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->bMobFilter->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->bMobFilter->Location = System::Drawing::Point(194, 157);
-			this->bMobFilter->Name = L"bMobFilter";
-			this->bMobFilter->Size = System::Drawing::Size(180, 23);
-			this->bMobFilter->TabIndex = 19;
-			this->bMobFilter->Text = L"Enable Mob Filter";
-			this->bMobFilter->UseVisualStyleBackColor = true;
-			this->bMobFilter->Click += gcnew System::EventHandler(this, &MainForm::bMobFilter_Click);
-			// 
-			// panel20
-			// 
-			this->panel20->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->panel20->Controls->Add(this->lbItemSearchLog);
-			this->panel20->Controls->Add(this->lbItemFilter);
-			this->panel20->Controls->Add(this->cbItemFilterLog);
-			this->panel20->Controls->Add(this->bItemSearchLogClear);
-			this->panel20->Controls->Add(this->tbItemFilterSearch);
-			this->panel20->Controls->Add(this->label74);
-			this->panel20->Controls->Add(this->bItemFilterAdd);
-			this->panel20->Controls->Add(this->tbItemFilterID);
-			this->panel20->Controls->Add(this->label73);
-			this->panel20->Controls->Add(this->tbItemFilterMesos);
-			this->panel20->Controls->Add(this->label70);
-			this->panel20->Controls->Add(this->rbItemFilterWhiteList);
-			this->panel20->Controls->Add(this->rbItemFilterBlackList);
-			this->panel20->Controls->Add(this->bItemFilter);
-			this->panel20->Location = System::Drawing::Point(5, 5);
-			this->panel20->Name = L"panel20";
-			this->panel20->Size = System::Drawing::Size(381, 186);
-			this->panel20->TabIndex = 1;
+			this->bItemSearchLogClear->Location = System::Drawing::Point(302, 332);
+			this->bItemSearchLogClear->Name = L"bItemSearchLogClear";
+			this->bItemSearchLogClear->Size = System::Drawing::Size(42, 23);
+			this->bItemSearchLogClear->TabIndex = 29;
+			this->bItemSearchLogClear->Text = L"Clear";
+			this->bItemSearchLogClear->UseVisualStyleBackColor = true;
+			this->bItemSearchLogClear->Click += gcnew System::EventHandler(this, &MainForm::bItemSearchLogClear_Click);
 			// 
 			// lbItemSearchLog
 			// 
@@ -5284,11 +5345,24 @@ namespace Timelapse {
 			this->lbItemSearchLog->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->lbItemSearchLog->ForeColor = System::Drawing::Color::White;
 			this->lbItemSearchLog->FormattingEnabled = true;
-			this->lbItemSearchLog->Location = System::Drawing::Point(194, 44);
+			this->lbItemSearchLog->Location = System::Drawing::Point(6, 195);
 			this->lbItemSearchLog->Name = L"lbItemSearchLog";
-			this->lbItemSearchLog->Size = System::Drawing::Size(179, 80);
+			this->lbItemSearchLog->Size = System::Drawing::Size(367, 132);
 			this->lbItemSearchLog->TabIndex = 52;
 			this->lbItemSearchLog->MouseDoubleClick += gcnew System::Windows::Forms::MouseEventHandler(this, &MainForm::lbItemSearchLog_MouseDoubleClick);
+			// 
+			// tbItemFilterSearch
+			// 
+			this->tbItemFilterSearch->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(35)),
+				static_cast<System::Int32>(static_cast<System::Byte>(35)), static_cast<System::Int32>(static_cast<System::Byte>(35)));
+			this->tbItemFilterSearch->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->tbItemFilterSearch->ForeColor = System::Drawing::Color::White;
+			this->tbItemFilterSearch->Location = System::Drawing::Point(57, 333);
+			this->tbItemFilterSearch->Name = L"tbItemFilterSearch";
+			this->tbItemFilterSearch->Size = System::Drawing::Size(239, 21);
+			this->tbItemFilterSearch->TabIndex = 27;
+			this->tbItemFilterSearch->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->tbItemFilterSearch->TextChanged += gcnew System::EventHandler(this, &MainForm::tbItemFilterSearch_TextChanged);
 			// 
 			// lbItemFilter
 			// 
@@ -5297,11 +5371,20 @@ namespace Timelapse {
 			this->lbItemFilter->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->lbItemFilter->ForeColor = System::Drawing::Color::White;
 			this->lbItemFilter->FormattingEnabled = true;
-			this->lbItemFilter->Location = System::Drawing::Point(7, 8);
+			this->lbItemFilter->Location = System::Drawing::Point(6, 30);
 			this->lbItemFilter->Name = L"lbItemFilter";
-			this->lbItemFilter->Size = System::Drawing::Size(180, 145);
+			this->lbItemFilter->Size = System::Drawing::Size(367, 132);
 			this->lbItemFilter->TabIndex = 31;
 			this->lbItemFilter->MouseDoubleClick += gcnew System::Windows::Forms::MouseEventHandler(this, &MainForm::lbItemFilter_MouseDoubleClick);
+			// 
+			// label74
+			// 
+			this->label74->AutoSize = true;
+			this->label74->Location = System::Drawing::Point(11, 336);
+			this->label74->Name = L"label74";
+			this->label74->Size = System::Drawing::Size(44, 13);
+			this->label74->TabIndex = 28;
+			this->label74->Text = L"Search:";
 			// 
 			// cbItemFilterLog
 			// 
@@ -5309,7 +5392,7 @@ namespace Timelapse {
 			this->cbItemFilterLog->FlatAppearance->BorderColor = System::Drawing::Color::Maroon;
 			this->cbItemFilterLog->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->cbItemFilterLog->ForeColor = System::Drawing::Color::White;
-			this->cbItemFilterLog->Location = System::Drawing::Point(194, 5);
+			this->cbItemFilterLog->Location = System::Drawing::Point(303, 7);
 			this->cbItemFilterLog->Name = L"cbItemFilterLog";
 			this->cbItemFilterLog->Size = System::Drawing::Size(70, 17);
 			this->cbItemFilterLog->TabIndex = 30;
@@ -5317,55 +5400,39 @@ namespace Timelapse {
 			this->cbItemFilterLog->UseVisualStyleBackColor = false;
 			this->cbItemFilterLog->CheckedChanged += gcnew System::EventHandler(this, &MainForm::cbItemFilterLog_CheckedChanged);
 			// 
-			// bItemSearchLogClear
+			// tbItemFilterMesos
 			// 
-			this->bItemSearchLogClear->FlatAppearance->BorderColor = System::Drawing::Color::Gray;
-			this->bItemSearchLogClear->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->bItemSearchLogClear->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->bItemSearchLogClear->Location = System::Drawing::Point(326, 129);
-			this->bItemSearchLogClear->Name = L"bItemSearchLogClear";
-			this->bItemSearchLogClear->Size = System::Drawing::Size(47, 23);
-			this->bItemSearchLogClear->TabIndex = 29;
-			this->bItemSearchLogClear->Text = L"Clear";
-			this->bItemSearchLogClear->UseVisualStyleBackColor = true;
-			this->bItemSearchLogClear->Click += gcnew System::EventHandler(this, &MainForm::bItemSearchLogClear_Click);
-			// 
-			// tbItemFilterSearch
-			// 
-			this->tbItemFilterSearch->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(35)),
+			this->tbItemFilterMesos->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(35)),
 				static_cast<System::Int32>(static_cast<System::Byte>(35)), static_cast<System::Int32>(static_cast<System::Byte>(35)));
-			this->tbItemFilterSearch->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->tbItemFilterSearch->ForeColor = System::Drawing::Color::White;
-			this->tbItemFilterSearch->Location = System::Drawing::Point(233, 130);
-			this->tbItemFilterSearch->Name = L"tbItemFilterSearch";
-			this->tbItemFilterSearch->Size = System::Drawing::Size(87, 21);
-			this->tbItemFilterSearch->TabIndex = 27;
-			this->tbItemFilterSearch->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			this->tbItemFilterSearch->TextChanged += gcnew System::EventHandler(this, &MainForm::tbItemFilterSearch_TextChanged);
+			this->tbItemFilterMesos->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->tbItemFilterMesos->ForeColor = System::Drawing::Color::White;
+			this->tbItemFilterMesos->Location = System::Drawing::Point(70, 6);
+			this->tbItemFilterMesos->Name = L"tbItemFilterMesos";
+			this->tbItemFilterMesos->Size = System::Drawing::Size(58, 21);
+			this->tbItemFilterMesos->TabIndex = 22;
+			this->tbItemFilterMesos->Text = L"0";
+			this->tbItemFilterMesos->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->tbItemFilterMesos->TextChanged += gcnew System::EventHandler(this, &MainForm::tbItemFilterMesos_TextChanged);
+			this->tbItemFilterMesos->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainForm::tbItemFilterMesos_KeyPress);
 			// 
-			// label74
+			// label73
 			// 
-			this->label74->AutoSize = true;
-			this->label74->Location = System::Drawing::Point(191, 134);
-			this->label74->Name = L"label74";
-			this->label74->Size = System::Drawing::Size(44, 13);
-			this->label74->TabIndex = 28;
-			this->label74->Text = L"Search:";
+			this->label73->AutoSize = true;
+			this->label73->Location = System::Drawing::Point(9, 173);
+			this->label73->Name = L"label73";
+			this->label73->Size = System::Drawing::Size(59, 13);
+			this->label73->TabIndex = 25;
+			this->label73->Text = L"Add by ID:";
 			// 
-			// bItemFilterAdd
+			// label70
 			// 
-			this->bItemFilterAdd->FlatAppearance->BorderColor = System::Drawing::Color::Gray;
-			this->bItemFilterAdd->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->bItemFilterAdd->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->bItemFilterAdd->Location = System::Drawing::Point(151, 157);
-			this->bItemFilterAdd->Name = L"bItemFilterAdd";
-			this->bItemFilterAdd->Size = System::Drawing::Size(37, 23);
-			this->bItemFilterAdd->TabIndex = 26;
-			this->bItemFilterAdd->Text = L"Add";
-			this->bItemFilterAdd->UseVisualStyleBackColor = true;
-			this->bItemFilterAdd->Click += gcnew System::EventHandler(this, &MainForm::bItemFilterAdd_Click);
+			this->label70->AutoSize = true;
+			this->label70->ForeColor = System::Drawing::Color::White;
+			this->label70->Location = System::Drawing::Point(9, 9);
+			this->label70->Name = L"label70";
+			this->label70->Size = System::Drawing::Size(56, 13);
+			this->label70->TabIndex = 23;
+			this->label70->Text = L"Mesos <=";
 			// 
 			// tbItemFilterID
 			// 
@@ -5373,54 +5440,34 @@ namespace Timelapse {
 				static_cast<System::Int32>(static_cast<System::Byte>(35)));
 			this->tbItemFilterID->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->tbItemFilterID->ForeColor = System::Drawing::Color::White;
-			this->tbItemFilterID->Location = System::Drawing::Point(65, 158);
+			this->tbItemFilterID->Location = System::Drawing::Point(70, 169);
 			this->tbItemFilterID->Name = L"tbItemFilterID";
-			this->tbItemFilterID->Size = System::Drawing::Size(81, 21);
+			this->tbItemFilterID->Size = System::Drawing::Size(76, 21);
 			this->tbItemFilterID->TabIndex = 24;
 			this->tbItemFilterID->Text = L"5070000";
 			this->tbItemFilterID->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->tbItemFilterID->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainForm::tbItemFilterID_KeyPress);
 			// 
-			// label73
+			// bItemFilterAdd
 			// 
-			this->label73->AutoSize = true;
-			this->label73->Location = System::Drawing::Point(6, 162);
-			this->label73->Name = L"label73";
-			this->label73->Size = System::Drawing::Size(59, 13);
-			this->label73->TabIndex = 25;
-			this->label73->Text = L"Add by ID:";
-			// 
-			// tbItemFilterMesos
-			// 
-			this->tbItemFilterMesos->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(35)),
-				static_cast<System::Int32>(static_cast<System::Byte>(35)), static_cast<System::Int32>(static_cast<System::Byte>(35)));
-			this->tbItemFilterMesos->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->tbItemFilterMesos->ForeColor = System::Drawing::Color::White;
-			this->tbItemFilterMesos->Location = System::Drawing::Point(334, 4);
-			this->tbItemFilterMesos->Name = L"tbItemFilterMesos";
-			this->tbItemFilterMesos->Size = System::Drawing::Size(39, 21);
-			this->tbItemFilterMesos->TabIndex = 22;
-			this->tbItemFilterMesos->Text = L"0";
-			this->tbItemFilterMesos->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			this->tbItemFilterMesos->TextChanged += gcnew System::EventHandler(this, &MainForm::tbItemFilterMesos_TextChanged);
-			this->tbItemFilterMesos->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainForm::tbItemFilterMesos_KeyPress);
-			// 
-			// label70
-			// 
-			this->label70->AutoSize = true;
-			this->label70->ForeColor = System::Drawing::Color::Lime;
-			this->label70->Location = System::Drawing::Point(276, 7);
-			this->label70->Name = L"label70";
-			this->label70->Size = System::Drawing::Size(56, 13);
-			this->label70->TabIndex = 23;
-			this->label70->Text = L"Mesos <=";
+			this->bItemFilterAdd->FlatAppearance->BorderColor = System::Drawing::Color::Gray;
+			this->bItemFilterAdd->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->bItemFilterAdd->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->bItemFilterAdd->Location = System::Drawing::Point(151, 167);
+			this->bItemFilterAdd->Name = L"bItemFilterAdd";
+			this->bItemFilterAdd->Size = System::Drawing::Size(37, 23);
+			this->bItemFilterAdd->TabIndex = 26;
+			this->bItemFilterAdd->Text = L"Add";
+			this->bItemFilterAdd->UseVisualStyleBackColor = true;
+			this->bItemFilterAdd->Click += gcnew System::EventHandler(this, &MainForm::bItemFilterAdd_Click);
 			// 
 			// rbItemFilterWhiteList
 			// 
 			this->rbItemFilterWhiteList->AutoSize = true;
 			this->rbItemFilterWhiteList->Checked = true;
 			this->rbItemFilterWhiteList->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->rbItemFilterWhiteList->Location = System::Drawing::Point(208, 26);
+			this->rbItemFilterWhiteList->Location = System::Drawing::Point(148, 7);
 			this->rbItemFilterWhiteList->Name = L"rbItemFilterWhiteList";
 			this->rbItemFilterWhiteList->Size = System::Drawing::Size(68, 17);
 			this->rbItemFilterWhiteList->TabIndex = 21;
@@ -5433,26 +5480,193 @@ namespace Timelapse {
 			// 
 			this->rbItemFilterBlackList->AutoSize = true;
 			this->rbItemFilterBlackList->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->rbItemFilterBlackList->Location = System::Drawing::Point(301, 27);
+			this->rbItemFilterBlackList->Location = System::Drawing::Point(222, 7);
 			this->rbItemFilterBlackList->Name = L"rbItemFilterBlackList";
 			this->rbItemFilterBlackList->Size = System::Drawing::Size(64, 17);
 			this->rbItemFilterBlackList->TabIndex = 20;
 			this->rbItemFilterBlackList->Text = L"BlackList";
 			this->rbItemFilterBlackList->UseVisualStyleBackColor = false;
 			// 
-			// bItemFilter
+			// tabPage14
 			// 
-			this->bItemFilter->FlatAppearance->BorderColor = System::Drawing::Color::Gray;
-			this->bItemFilter->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->bItemFilter->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->tabPage14->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
+				static_cast<System::Int32>(static_cast<System::Byte>(25)));
+			this->tabPage14->Controls->Add(this->bMobFilter);
+			this->tabPage14->Controls->Add(this->bMobSearchLogClear);
+			this->tabPage14->Controls->Add(this->lbMobSearchLog);
+			this->tabPage14->Controls->Add(this->tbMobFilterSearch);
+			this->tabPage14->Controls->Add(this->label75);
+			this->tabPage14->Controls->Add(this->cbMobFilterLog);
+			this->tabPage14->Controls->Add(this->lbMobFilter);
+			this->tabPage14->Controls->Add(this->label77);
+			this->tabPage14->Controls->Add(this->bMobFilterAdd);
+			this->tabPage14->Controls->Add(this->rbMobFilterWhiteList);
+			this->tabPage14->Controls->Add(this->tbMobFilterID);
+			this->tabPage14->Controls->Add(this->rbMobFilterBlackList);
+			this->tabPage14->Controls->Add(this->label76);
+			this->tabPage14->Location = System::Drawing::Point(4, 22);
+			this->tabPage14->Name = L"tabPage14";
+			this->tabPage14->Padding = System::Windows::Forms::Padding(3);
+			this->tabPage14->Size = System::Drawing::Size(423, 358);
+			this->tabPage14->TabIndex = 1;
+			this->tabPage14->Text = L"MobFilter";
+			// 
+			// bMobFilter
+			// 
+			this->bMobFilter->FlatAppearance->BorderColor = System::Drawing::Color::Gray;
+			this->bMobFilter->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->bMobFilter->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->bItemFilter->Location = System::Drawing::Point(194, 157);
-			this->bItemFilter->Name = L"bItemFilter";
-			this->bItemFilter->Size = System::Drawing::Size(180, 23);
-			this->bItemFilter->TabIndex = 19;
-			this->bItemFilter->Text = L"Enable Item Filter";
-			this->bItemFilter->UseVisualStyleBackColor = true;
-			this->bItemFilter->Click += gcnew System::EventHandler(this, &MainForm::bItemFilter_Click);
+			this->bMobFilter->ForeColor = System::Drawing::Color::Lime;
+			this->bMobFilter->Location = System::Drawing::Point(207, 158);
+			this->bMobFilter->Name = L"bMobFilter";
+			this->bMobFilter->Size = System::Drawing::Size(167, 23);
+			this->bMobFilter->TabIndex = 19;
+			this->bMobFilter->Text = L"Enable Mob Filter";
+			this->bMobFilter->UseVisualStyleBackColor = true;
+			// 
+			// bMobSearchLogClear
+			// 
+			this->bMobSearchLogClear->FlatAppearance->BorderColor = System::Drawing::Color::Gray;
+			this->bMobSearchLogClear->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->bMobSearchLogClear->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->bMobSearchLogClear->Location = System::Drawing::Point(300, 325);
+			this->bMobSearchLogClear->Name = L"bMobSearchLogClear";
+			this->bMobSearchLogClear->Size = System::Drawing::Size(47, 23);
+			this->bMobSearchLogClear->TabIndex = 29;
+			this->bMobSearchLogClear->Text = L"Clear";
+			this->bMobSearchLogClear->UseVisualStyleBackColor = true;
+			// 
+			// lbMobSearchLog
+			// 
+			this->lbMobSearchLog->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
+				static_cast<System::Int32>(static_cast<System::Byte>(25)));
+			this->lbMobSearchLog->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->lbMobSearchLog->ForeColor = System::Drawing::Color::White;
+			this->lbMobSearchLog->FormattingEnabled = true;
+			this->lbMobSearchLog->Location = System::Drawing::Point(3, 187);
+			this->lbMobSearchLog->Name = L"lbMobSearchLog";
+			this->lbMobSearchLog->Size = System::Drawing::Size(371, 132);
+			this->lbMobSearchLog->TabIndex = 53;
+			// 
+			// tbMobFilterSearch
+			// 
+			this->tbMobFilterSearch->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(35)),
+				static_cast<System::Int32>(static_cast<System::Byte>(35)), static_cast<System::Int32>(static_cast<System::Byte>(35)));
+			this->tbMobFilterSearch->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->tbMobFilterSearch->ForeColor = System::Drawing::Color::White;
+			this->tbMobFilterSearch->Location = System::Drawing::Point(62, 326);
+			this->tbMobFilterSearch->Name = L"tbMobFilterSearch";
+			this->tbMobFilterSearch->Size = System::Drawing::Size(231, 21);
+			this->tbMobFilterSearch->TabIndex = 27;
+			this->tbMobFilterSearch->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			// 
+			// label75
+			// 
+			this->label75->AutoSize = true;
+			this->label75->Location = System::Drawing::Point(12, 331);
+			this->label75->Name = L"label75";
+			this->label75->Size = System::Drawing::Size(44, 13);
+			this->label75->TabIndex = 28;
+			this->label75->Text = L"Search:";
+			// 
+			// cbMobFilterLog
+			// 
+			this->cbMobFilterLog->AutoSize = true;
+			this->cbMobFilterLog->FlatAppearance->BorderColor = System::Drawing::Color::Maroon;
+			this->cbMobFilterLog->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->cbMobFilterLog->ForeColor = System::Drawing::Color::White;
+			this->cbMobFilterLog->Location = System::Drawing::Point(298, 7);
+			this->cbMobFilterLog->Name = L"cbMobFilterLog";
+			this->cbMobFilterLog->Size = System::Drawing::Size(68, 17);
+			this->cbMobFilterLog->TabIndex = 33;
+			this->cbMobFilterLog->Text = L"Log Mobs";
+			this->cbMobFilterLog->UseVisualStyleBackColor = false;
+			// 
+			// lbMobFilter
+			// 
+			this->lbMobFilter->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
+				static_cast<System::Int32>(static_cast<System::Byte>(25)));
+			this->lbMobFilter->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->lbMobFilter->ForeColor = System::Drawing::Color::White;
+			this->lbMobFilter->FormattingEnabled = true;
+			this->lbMobFilter->Location = System::Drawing::Point(5, 24);
+			this->lbMobFilter->Name = L"lbMobFilter";
+			this->lbMobFilter->Size = System::Drawing::Size(371, 132);
+			this->lbMobFilter->TabIndex = 34;
+			// 
+			// label77
+			// 
+			this->label77->AutoSize = true;
+			this->label77->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label77->ForeColor = System::Drawing::Color::White;
+			this->label77->Location = System::Drawing::Point(9, 7);
+			this->label77->Name = L"label77";
+			this->label77->Size = System::Drawing::Size(114, 13);
+			this->label77->TabIndex = 23;
+			this->label77->Text = L"Filters Mobs on Spawn";
+			this->label77->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// bMobFilterAdd
+			// 
+			this->bMobFilterAdd->FlatAppearance->BorderColor = System::Drawing::Color::Gray;
+			this->bMobFilterAdd->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->bMobFilterAdd->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->bMobFilterAdd->Location = System::Drawing::Point(162, 158);
+			this->bMobFilterAdd->Name = L"bMobFilterAdd";
+			this->bMobFilterAdd->Size = System::Drawing::Size(36, 23);
+			this->bMobFilterAdd->TabIndex = 26;
+			this->bMobFilterAdd->Text = L"Add";
+			this->bMobFilterAdd->UseVisualStyleBackColor = true;
+			// 
+			// rbMobFilterWhiteList
+			// 
+			this->rbMobFilterWhiteList->AutoSize = true;
+			this->rbMobFilterWhiteList->Checked = true;
+			this->rbMobFilterWhiteList->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->rbMobFilterWhiteList->Location = System::Drawing::Point(144, 7);
+			this->rbMobFilterWhiteList->Name = L"rbMobFilterWhiteList";
+			this->rbMobFilterWhiteList->Size = System::Drawing::Size(68, 17);
+			this->rbMobFilterWhiteList->TabIndex = 32;
+			this->rbMobFilterWhiteList->TabStop = true;
+			this->rbMobFilterWhiteList->Text = L"WhiteList";
+			this->rbMobFilterWhiteList->UseVisualStyleBackColor = true;
+			// 
+			// tbMobFilterID
+			// 
+			this->tbMobFilterID->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(35)), static_cast<System::Int32>(static_cast<System::Byte>(35)),
+				static_cast<System::Int32>(static_cast<System::Byte>(35)));
+			this->tbMobFilterID->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->tbMobFilterID->ForeColor = System::Drawing::Color::White;
+			this->tbMobFilterID->Location = System::Drawing::Point(71, 159);
+			this->tbMobFilterID->Name = L"tbMobFilterID";
+			this->tbMobFilterID->Size = System::Drawing::Size(81, 21);
+			this->tbMobFilterID->TabIndex = 24;
+			this->tbMobFilterID->Text = L"100101";
+			this->tbMobFilterID->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			// 
+			// rbMobFilterBlackList
+			// 
+			this->rbMobFilterBlackList->AutoSize = true;
+			this->rbMobFilterBlackList->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->rbMobFilterBlackList->Location = System::Drawing::Point(218, 7);
+			this->rbMobFilterBlackList->Name = L"rbMobFilterBlackList";
+			this->rbMobFilterBlackList->Size = System::Drawing::Size(64, 17);
+			this->rbMobFilterBlackList->TabIndex = 31;
+			this->rbMobFilterBlackList->Text = L"BlackList";
+			this->rbMobFilterBlackList->UseVisualStyleBackColor = false;
+			// 
+			// label76
+			// 
+			this->label76->AutoSize = true;
+			this->label76->Location = System::Drawing::Point(9, 161);
+			this->label76->Name = L"label76";
+			this->label76->Size = System::Drawing::Size(59, 13);
+			this->label76->TabIndex = 25;
+			this->label76->Text = L"Add by ID:";
 			// 
 			// tabPage8
 			// 
@@ -5461,7 +5675,7 @@ namespace Timelapse {
 			this->tabPage8->Controls->Add(this->tabControl5);
 			this->tabPage8->Location = System::Drawing::Point(4, 22);
 			this->tabPage8->Name = L"tabPage8";
-			this->tabPage8->Size = System::Drawing::Size(390, 385);
+			this->tabPage8->Size = System::Drawing::Size(435, 402);
 			this->tabPage8->TabIndex = 5;
 			this->tabPage8->Text = L"Packets";
 			// 
@@ -5498,6 +5712,17 @@ namespace Timelapse {
 			this->tabPage16->Size = System::Drawing::Size(394, 363);
 			this->tabPage16->TabIndex = 1;
 			this->tabPage16->Text = L"Send";
+			// 
+			// tvSendPackets
+			// 
+			this->tvSendPackets->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
+				static_cast<System::Int32>(static_cast<System::Byte>(25)));
+			this->tvSendPackets->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->tvSendPackets->ForeColor = System::Drawing::Color::White;
+			this->tvSendPackets->Location = System::Drawing::Point(80, 6);
+			this->tvSendPackets->Name = L"tvSendPackets";
+			this->tvSendPackets->Size = System::Drawing::Size(304, 288);
+			this->tvSendPackets->TabIndex = 43;
 			// 
 			// label81
 			// 
@@ -5638,6 +5863,17 @@ namespace Timelapse {
 			this->tabPage15->TabIndex = 0;
 			this->tabPage15->Text = L"Recv";
 			// 
+			// tvRecvPackets
+			// 
+			this->tvRecvPackets->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
+				static_cast<System::Int32>(static_cast<System::Byte>(25)));
+			this->tvRecvPackets->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->tvRecvPackets->ForeColor = System::Drawing::Color::White;
+			this->tvRecvPackets->Location = System::Drawing::Point(80, 6);
+			this->tvRecvPackets->Name = L"tvRecvPackets";
+			this->tvRecvPackets->Size = System::Drawing::Size(304, 288);
+			this->tvRecvPackets->TabIndex = 44;
+			// 
 			// bRecvRemove
 			// 
 			this->bRecvRemove->FlatAppearance->BorderColor = System::Drawing::Color::Gray;
@@ -5756,6 +5992,20 @@ namespace Timelapse {
 			this->tabPage19->TabIndex = 3;
 			this->tabPage19->Text = L"Defined Packets";
 			// 
+			// comboInUseSlot
+			// 
+			this->comboInUseSlot->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(35)), static_cast<System::Int32>(static_cast<System::Byte>(35)),
+				static_cast<System::Int32>(static_cast<System::Byte>(35)));
+			this->comboInUseSlot->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->comboInUseSlot->ForeColor = System::Drawing::Color::White;
+			this->comboInUseSlot->Location = System::Drawing::Point(90, 252);
+			this->comboInUseSlot->Name = L"comboInUseSlot";
+			this->comboInUseSlot->Size = System::Drawing::Size(44, 21);
+			this->comboInUseSlot->TabIndex = 28;
+			this->comboInUseSlot->Text = L"1";
+			this->comboInUseSlot->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->comboInUseSlot->TextChanged += gcnew System::EventHandler(this, &MainForm::comboInUseSlot_TextChanged);
+			// 
 			// lbInUseSlot
 			// 
 			this->lbInUseSlot->AutoSize = true;
@@ -5773,7 +6023,9 @@ namespace Timelapse {
 			this->comboToTown->ForeColor = System::Drawing::Color::White;
 			this->comboToTown->FormattingEnabled = true;
 			this->comboToTown->Items->AddRange(gcnew cli::array< System::Object^  >(8) {
-				L"Nearest", L"LithHarbor", L"Ellinia", L"Perion", L"Henesys", L"KerningCity", L"Sleepywood", L"DeadMine" });
+				L"Nearest", L"LithHarbor", L"Ellinia", L"Perion",
+					L"Henesys", L"KerningCity", L"Sleepywood", L"DeadMine"
+			});
 			this->comboToTown->Location = System::Drawing::Point(73, 225);
 			this->comboToTown->Name = L"comboToTown";
 			this->comboToTown->Size = System::Drawing::Size(62, 21);
@@ -6033,7 +6285,6 @@ namespace Timelapse {
 			// cbAP
 			// 
 			this->cbAP->AutoSize = true;
-			this->cbAP->Enabled = false;
 			this->cbAP->FlatAppearance->BorderColor = System::Drawing::Color::Maroon;
 			this->cbAP->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->cbAP->ForeColor = System::Drawing::Color::White;
@@ -6131,7 +6382,7 @@ namespace Timelapse {
 			this->tabPage9->Controls->Add(this->panel30);
 			this->tabPage9->Location = System::Drawing::Point(4, 22);
 			this->tabPage9->Name = L"tabPage9";
-			this->tabPage9->Size = System::Drawing::Size(390, 385);
+			this->tabPage9->Size = System::Drawing::Size(435, 402);
 			this->tabPage9->TabIndex = 6;
 			this->tabPage9->Text = L"Map Rusher";
 			// 
@@ -6174,7 +6425,7 @@ namespace Timelapse {
 			// 
 			this->lbMapRusherStatus->Anchor = System::Windows::Forms::AnchorStyles::Bottom;
 			this->lbMapRusherStatus->AutoSize = true;
-			this->lbMapRusherStatus->Location = System::Drawing::Point(3, 366);
+			this->lbMapRusherStatus->Location = System::Drawing::Point(11, 366);
 			this->lbMapRusherStatus->Name = L"lbMapRusherStatus";
 			this->lbMapRusherStatus->Size = System::Drawing::Size(381, 13);
 			this->lbMapRusherStatus->TabIndex = 37;
@@ -6296,7 +6547,7 @@ namespace Timelapse {
 			this->btnClose->Font = (gcnew System::Drawing::Font(L"Lucida Console", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnClose->ForeColor = System::Drawing::Color::Firebrick;
-			this->btnClose->Location = System::Drawing::Point(520, -1);
+			this->btnClose->Location = System::Drawing::Point(603, -1);
 			this->btnClose->Name = L"btnClose";
 			this->btnClose->Size = System::Drawing::Size(29, 30);
 			this->btnClose->TabIndex = 8;
@@ -6316,27 +6567,6 @@ namespace Timelapse {
 			this->AutoCCCSTimer->Interval = 250;
 			this->AutoCCCSTimer->Tick += gcnew System::EventHandler(this, &MainForm::AutoCCCSTimer_Tick);
 			// 
-			// tvSendPackets
-			// 
-			this->tvSendPackets->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
-				static_cast<System::Int32>(static_cast<System::Byte>(25)));
-			this->tvSendPackets->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->tvSendPackets->ForeColor = System::Drawing::Color::White;
-			this->tvSendPackets->Location = System::Drawing::Point(80, 6);
-			this->tvSendPackets->Name = L"tvSendPackets";
-			this->tvSendPackets->Size = System::Drawing::Size(304, 288);
-			this->tvSendPackets->TabIndex = 43;
-			// 
-			// tvRecvPackets
-			// 
-			this->tvRecvPackets->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
-				static_cast<System::Int32>(static_cast<System::Byte>(25)));
-			this->tvRecvPackets->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->tvRecvPackets->ForeColor = System::Drawing::Color::White;
-			this->tvRecvPackets->Location = System::Drawing::Point(80, 6);
-			this->tvRecvPackets->Name = L"tvRecvPackets";
-			this->tvRecvPackets->Size = System::Drawing::Size(304, 288);
-			this->tvRecvPackets->TabIndex = 44;
 			// tAutoAttack
 			// 
 			this->tAutoAttack->Tick += gcnew System::EventHandler(this, &MainForm::tAutoAttack_Tick);
@@ -6345,19 +6575,32 @@ namespace Timelapse {
 			// 
 			this->tAutoLoot->Tick += gcnew System::EventHandler(this, &MainForm::tAutoLoot_Tick);
 			// 
-			// comboInUseSlot
+			// AutoAPTimer
 			// 
-			this->comboInUseSlot->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(35)), static_cast<System::Int32>(static_cast<System::Byte>(35)),
-				static_cast<System::Int32>(static_cast<System::Byte>(35)));
-			this->comboInUseSlot->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->comboInUseSlot->ForeColor = System::Drawing::Color::White;
-			this->comboInUseSlot->Location = System::Drawing::Point(90, 252);
-			this->comboInUseSlot->Name = L"comboInUseSlot";
-			this->comboInUseSlot->Size = System::Drawing::Size(44, 21);
-			this->comboInUseSlot->TabIndex = 28;
-			this->comboInUseSlot->Text = L"1";
-			this->comboInUseSlot->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			this->comboInUseSlot->TextChanged += gcnew System::EventHandler(this, &MainForm::comboInUseSlot_TextChanged);
+			this->AutoAPTimer->Enabled = true;
+			this->AutoAPTimer->Interval = 1000;
+			this->AutoAPTimer->Tick += gcnew System::EventHandler(this, &MainForm::AutoAPTimer_Tick);
+			// 
+			// label95
+			// 
+			this->label95->AutoSize = true;
+			this->label95->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
+			this->label95->Location = System::Drawing::Point(450, 287);
+			this->label95->Name = L"label95";
+			this->label95->Size = System::Drawing::Size(80, 13);
+			this->label95->TabIndex = 74;
+			this->label95->Text = L"Mouse PosAbs:";
+			// 
+			// lbMousePosAbs
+			// 
+			this->lbMousePosAbs->AutoSize = true;
+			this->lbMousePosAbs->Font = (gcnew System::Drawing::Font(L"Tahoma", 8.25F));
+			this->lbMousePosAbs->ForeColor = System::Drawing::Color::LightGreen;
+			this->lbMousePosAbs->Location = System::Drawing::Point(530, 287);
+			this->lbMousePosAbs->Name = L"lbMousePosAbs";
+			this->lbMousePosAbs->Size = System::Drawing::Size(70, 13);
+			this->lbMousePosAbs->TabIndex = 75;
+			this->lbMousePosAbs->Text = L"(0000, 0000)";
 			// 
 			// MainForm
 			// 
@@ -6365,7 +6608,7 @@ namespace Timelapse {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(16)), static_cast<System::Int32>(static_cast<System::Byte>(16)),
 				static_cast<System::Int32>(static_cast<System::Byte>(16)));
-			this->ClientSize = System::Drawing::Size(560, 500);
+			this->ClientSize = System::Drawing::Size(634, 521);
 			this->ControlBox = false;
 			this->Controls->Add(this->pnlFull);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
@@ -6436,8 +6679,6 @@ namespace Timelapse {
 			this->panel1->PerformLayout();
 			this->panel26->ResumeLayout(false);
 			this->panel26->PerformLayout();
-			this->panel18->ResumeLayout(false);
-			this->panel18->PerformLayout();
 			this->tabPage6->ResumeLayout(false);
 			this->panel28->ResumeLayout(false);
 			this->panel28->PerformLayout();
@@ -6454,10 +6695,11 @@ namespace Timelapse {
 			this->panel14->ResumeLayout(false);
 			this->panel14->PerformLayout();
 			this->tabPage7->ResumeLayout(false);
-			this->panel21->ResumeLayout(false);
-			this->panel21->PerformLayout();
-			this->panel20->ResumeLayout(false);
-			this->panel20->PerformLayout();
+			this->tabControl4->ResumeLayout(false);
+			this->tabPage13->ResumeLayout(false);
+			this->tabPage13->PerformLayout();
+			this->tabPage14->ResumeLayout(false);
+			this->tabPage14->PerformLayout();
 			this->tabPage8->ResumeLayout(false);
 			this->tabControl5->ResumeLayout(false);
 			this->tabPage16->ResumeLayout(false);
@@ -6473,7 +6715,7 @@ namespace Timelapse {
 			this->panel30->ResumeLayout(false);
 			this->panel30->PerformLayout();
 			this->ResumeLayout(false);
-			this->PerformLayout();
+
 		}
 #pragma endregion
 	private: System::Void MainForm_Load(System::Object^  sender, System::EventArgs^  e);
@@ -6673,5 +6915,6 @@ namespace Timelapse {
 	private: System::Void tbAPLUK_TextChanged(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void cbAP_CheckedChanged(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void comboInUseSlot_TextChanged(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void AutoAPTimer_Tick(System::Object^  sender, System::EventArgs^  e);
 	};
 };

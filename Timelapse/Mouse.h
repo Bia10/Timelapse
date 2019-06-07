@@ -20,6 +20,7 @@ namespace MouseInput
 
 		// Gets current mouse position
 		static void getMousePosition(int & xPos, int & yPos);
+		static System::String^ getMousePositionStr();
 
 		// Moves mouse cursor to the specified position.
 		static void moveTo(int x, int y, bool leftDown, bool rightDown);

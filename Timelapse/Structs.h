@@ -13,6 +13,21 @@ struct COutPacket {
 	int EncryptedByShanda;
 };
 
+//structs
+struct COutPacketv2
+{
+	BOOL fLoopback;
+	union
+	{
+		LPBYTE lpbData;
+		LPVOID lpvData;
+		LPWORD lpwHeader;
+	};
+	DWORD dwcbData;
+	UINT uOffset;
+	BOOL fEncryptedByShanda;
+};
+
 struct SendPacketData {
 	DWORD ReturnAddress;
 	COutPacket* packet;

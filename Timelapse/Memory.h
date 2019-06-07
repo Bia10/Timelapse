@@ -45,6 +45,11 @@ static double ReadPointerDouble(ULONG ulBase, int iOffset) {
 	__except (EXCEPTION_EXECUTE_HANDLER) { return NULL; }
 }
 
+static int ReadPointerShort(ULONG ulBase, int iOffset) {
+	__try { return *reinterpret_cast<SHORT*>(*reinterpret_cast<ULONG*>(ulBase) + iOffset); }
+	__except (EXCEPTION_EXECUTE_HANDLER) { return 0; }
+}
+
 static LPCSTR ReadPointerString(ULONG ulBase, int iOffset) {
 	__try { return (LPCSTR)(*(ULONG*)ulBase + iOffset); }
 	__except (EXCEPTION_EXECUTE_HANDLER) { return nullptr; }
@@ -53,7 +58,7 @@ static LPCSTR ReadPointerString(ULONG ulBase, int iOffset) {
 static UINT8 readCharValueZtlSecureFuse(int at) {
 	UINT8 result;
 	try {
-		UCHAR v2 = *(PUCHAR)at;
+		const UCHAR v2 = *(PUCHAR)at;
 		at = *(PUINT8)(at + 1);
 		result = at ^ v2;
 	}
@@ -63,7 +68,7 @@ static UINT8 readCharValueZtlSecureFuse(int at) {
 
 static INT16 readShortValueZtlSecureFuse(int a1) {
 	PUINT8 v2 = (PUINT8)(a1 + 2);
-	DWORD v4 = (DWORD)&a1 - a1;
+	const DWORD v4 = (DWORD)&a1 - a1;
 	try {
 		v2[v4] = *v2 ^ *(v2 - 2);
 		v2++;

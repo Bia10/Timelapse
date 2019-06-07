@@ -76,7 +76,7 @@ static String^ findMobNameFromID(int mobID) {
 static SpawnControlData* __stdcall getSpawnControlStruct() {
 	if (spawnControl->size() == 0) return nullptr;
 	for (SpawnControlData *spawnControlStruct : *spawnControl)
-		if (spawnControlStruct->mapID == ReadPointer(UIMiniMapBase, OFS_MapID))
+		if (spawnControlStruct->mapID == ReadPointer(UIMiniMapBase, m_dwFieldID))
 			return spawnControlStruct;
 	return nullptr;
 }
@@ -115,8 +115,6 @@ inline bool __stdcall shouldMobBeFiltered() {
 		if (mob == mobLogged) return true;
 	return false;
 }
-
-
 
 inline void __stdcall addSendPacket() {
 	COutPacket* packet = sendPacketData->packet;

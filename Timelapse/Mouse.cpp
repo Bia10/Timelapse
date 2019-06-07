@@ -1,4 +1,5 @@
 #include "Mouse.h"
+#include <string>
 #pragma comment(lib, "user32.lib")
 
 // init routine for mouse type INPUT structure
@@ -25,6 +26,17 @@ namespace MouseInput
 		xPos = cursorPos.x;
 		// do the same thing for the y position
 		yPos = cursorPos.y;
+	}
+
+	System::String^ Mouse::getMousePositionStr() {
+		// create POINT object named "cursorPos" for "cursor position"
+		POINT cursorPos;
+		// call the function "GetCursorPos" and pass it the a pointer to our POINT cursorPos
+		GetCursorPos(&cursorPos);
+		int xPos = cursorPos.x;
+		// do the same thing for the y position
+		int yPos = cursorPos.y;
+		return "(" + xPos.ToString() + ", " + yPos.ToString() + ")";
 	}
 
 	void Mouse::moveTo(int toX, int toY, bool leftDown, bool rightDown) {
@@ -82,7 +94,7 @@ namespace MouseInput
 	void Mouse::wheelDown() {
 		INIT_INPUT(input);
 		input.mi.dwFlags = MOUSEEVENTF_WHEEL;
-		input.mi.mouseData = -WHEEL_DELTA;
+		input.mi.mouseData = -WHEEL_DELTA; //L4 W int to DWORD
 		SendInput(1, &input, sizeof(INPUT));
 	}
 

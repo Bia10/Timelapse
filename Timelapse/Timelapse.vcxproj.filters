@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\MapleLib">
+      <UniqueIdentifier>{25d8e7ec-59b4-47b4-93f9-ee81f91de48a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainForm.h">
@@ -57,6 +60,63 @@
     <ClInclude Include="Inventory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MapleLib\stat_objects.hpp">
+      <Filter>Header Files\MapleLib</Filter>
+    </ClInclude>
+    <ClInclude Include="MapleLib\TSecType.hpp">
+      <Filter>Header Files\MapleLib</Filter>
+    </ClInclude>
+    <ClInclude Include="MapleLib\TSingleton.hpp">
+      <Filter>Header Files\MapleLib</Filter>
+    </ClInclude>
+    <ClInclude Include="MapleLib\ZArray.hpp">
+      <Filter>Header Files\MapleLib</Filter>
+    </ClInclude>
+    <ClInclude Include="MapleLib\ZException.hpp">
+      <Filter>Header Files\MapleLib</Filter>
+    </ClInclude>
+    <ClInclude Include="MapleLib\ZList.hpp">
+      <Filter>Header Files\MapleLib</Filter>
+    </ClInclude>
+    <ClInclude Include="MapleLib\ZMap.hpp">
+      <Filter>Header Files\MapleLib</Filter>
+    </ClInclude>
+    <ClInclude Include="MapleLib\ZRef.hpp">
+      <Filter>Header Files\MapleLib</Filter>
+    </ClInclude>
+    <ClInclude Include="MapleLib\ZRefCounted.hpp">
+      <Filter>Header Files\MapleLib</Filter>
+    </ClInclude>
+    <ClInclude Include="MapleLib\ZtlSecure.hpp">
+      <Filter>Header Files\MapleLib</Filter>
+    </ClInclude>
+    <ClInclude Include="MapleLib\ZXString.hpp">
+      <Filter>Header Files\MapleLib</Filter>
+    </ClInclude>
+    <ClInclude Include="Native.h">
+      <Filter>Header Files\MapleLib</Filter>
+    </ClInclude>
+    <ClInclude Include="detours.hpp">
+      <Filter>Header Files\MapleLib</Filter>
+    </ClInclude>
+    <ClInclude Include="drop_objects.hpp">
+      <Filter>Header Files\MapleLib</Filter>
+    </ClInclude>
+    <ClInclude Include="space_objects.hpp">
+      <Filter>Header Files\MapleLib</Filter>
+    </ClInclude>
+    <ClInclude Include="life_objects.hpp">
+      <Filter>Header Files\MapleLib</Filter>
+    </ClInclude>
+    <ClInclude Include="generic_objects.hpp">
+      <Filter>Header Files\MapleLib</Filter>
+    </ClInclude>
+    <ClInclude Include="Tuples.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Benchmark.hpp">
+      <Filter>Header Files\MapleLib</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainForm.cpp">
@@ -74,11 +134,17 @@
     <ClCompile Include="Mouse.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Inventory.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="Macro.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MapleLib\stat_objects.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="detours.cpp">
+      <Filter>Header Files\MapleLib</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +165,5 @@
   <ItemGroup>
     <None Include="..\LICENSE" />
     <None Include="..\README.md" />
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

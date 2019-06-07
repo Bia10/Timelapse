@@ -26,26 +26,26 @@ void writeBytes(String^ %packet, array<BYTE>^ bytes) {
 }
 
 void writeString(String^ %packet, String^ str) {
-	writeByte(packet, str->Length);
+	writeByte(packet, static_cast<BYTE>(str->Length));
 	writeByte(packet, 0);
 	writeBytes(packet, Text::Encoding::UTF8->GetBytes(str));
 }
 
 void writeInt(String^ %packet, int num) {
-	writeByte(packet, (BYTE)num);
-	writeByte(packet, (BYTE)((UINT)num >> 8 & 0xFF));
-	writeByte(packet, (BYTE)((UINT)num >> 16 & 0xFF));
-	writeByte(packet, (BYTE)((UINT)num >> 24 & 0xFF));
+	writeByte(packet, static_cast<BYTE>(num));
+	writeByte(packet, static_cast<BYTE>(static_cast<UINT>(num) >> 8 & 0xFF));
+	writeByte(packet, static_cast<BYTE>(static_cast<UINT>(num) >> 16 & 0xFF));
+	writeByte(packet, static_cast<BYTE>(static_cast<UINT>(num) >> 24 & 0xFF));
 }
 
 void writeShort(String^ %packet, short num) {
-	writeByte(packet, (BYTE)num);
-	writeByte(packet, (BYTE)((UINT)num >> 8 & 0xFF));
+	writeByte(packet, static_cast<BYTE>(num));
+	writeByte(packet, static_cast<BYTE>(static_cast<UINT>(num) >> 8 & 0xFF));
 }
 
 void writeUnsignedShort(System::String^ %packet, USHORT num) {
-	writeByte(packet, (BYTE)num);
-	writeByte(packet, (BYTE)((UINT)num >> 8 & 0xFF));
+	writeByte(packet, static_cast<BYTE>(num));
+	writeByte(packet, static_cast<BYTE>(static_cast<UINT>(num) >> 8 & 0xFF));
 }
 
 bool IsValidRawPacket(String^ rawPacket) {
@@ -58,7 +58,8 @@ bool IsValidRawPacket(String^ rawPacket) {
 		if (rawPacket[i] >= 'A' && rawPacket[i] <= 'F') continue;
 		if (rawPacket[i] == '*') continue;
 
-		Log::WriteLineToConsole("SendPacket::ERROR: Invalid character detected in packet: It contains a \"" + rawPacket[i] + "\"");
+		Log::WriteLineToConsole("SendPacket::ERROR: Invalid character detected in packet!");
+		Log::WriteLineToConsole(" It contains a \"" + rawPacket[i] + "\"");
 		return false;
 	}
 
@@ -66,25 +67,49 @@ bool IsValidRawPacket(String^ rawPacket) {
 }
 
 // TODO: more error checking/thread safety
-bool SendPacket(String^ packetStr)
-{
+bool SendPacket(String^ str) {
+	String^ rawBytes = String::Empty;
 	COutPacket Packet;
 	SecureZeroMemory(&Packet, sizeof(COutPacket));
+	auto rndObj = gcnew Random();
+	String^ rndByte = {};
+
 	// Clean whitespace
-	String^ rawPacket = packetStr->Replace(" ", String::Empty);
-	if (!IsValidRawPacket(rawPacket)) return false;
-	// Create random bytes for "*"
-	String^ processedPacket = rawPacket->Replace("*", (rand() % 16).ToString("X"));
+	String^ strPacket = str->Replace(" ", "");
+
+	// Create unique rnd bytes
+	for (int i = 0; i < strPacket->Length; i++) {
+		if (strPacket[i] == '*') {
+			rndByte = rndObj->Next(16).ToString("X");
+
+			Log::WriteLineToConsole("SendPacket::generatingRndByte: " + rndByte);
+			if (rndByte == "00") {
+				rndByte = rndObj->Next(16).ToString("X");
+				Log::WriteLineToConsole("SendPacket::generatingRndByte:new " + rndByte);
+			}
+
+			rawBytes += rndByte;			
+		}
+		else 
+			rawBytes += strPacket[i];
+	}
+
+	// Check validity
+	if (!IsValidRawPacket(rawBytes)) return false;
+	Log::WriteLineToConsole("SendPacket::processedPacket: " + rawBytes);
+
 	// Temp buffer
 	BYTE tmpPacketStr[150];
 	// 32-bit pointer to a constant null-terminated string of 8-bit Windows (ANSI) characters
-	const LPCSTR lpcszPacket = static_cast<LPCSTR>(Runtime::InteropServices::Marshal::StringToHGlobalAnsi(processedPacket).ToPointer());
+	const LPCSTR lpcszPacket = static_cast<LPCSTR>(Runtime::InteropServices::Marshal::StringToHGlobalAnsi(rawBytes).ToPointer());
+
 	// enforcing that packet size is a multiple of 2
 	Packet.Size = strlen(lpcszPacket) / 2;
-	if (Packet.Size % 2 == 1) {
-		Log::WriteLineToConsole("SendPacket::ERROR: Packet size is not a multiple of 2!");
-		return false;
-	}
+	//if (Packet.Size % 2 == 1) {
+		//Log::WriteLineToConsole("SendPacket::ERROR: Packet size is not a multiple of 2!");
+		//return false;
+	//}
+
 	// enforce only hex characters
 	Packet.Data = atohx(tmpPacketStr, lpcszPacket);
 
@@ -96,13 +121,12 @@ bool SendPacket(String^ packetStr)
 	catch (...) { return false; }
 }
 
-bool RecvPacket(String^ packetStr)
-{
+bool RecvPacket(String^ packetStr) {
 	CInPacket Packet;
 	SecureZeroMemory(&Packet, sizeof(CInPacket));
 	String^ rawPacket = packetStr->Replace(" ", String::Empty)->Replace("*", (rand() % 16).ToString("X"));
 	BYTE tmpPacketStr[150];
-	const LPCSTR lpcszPacket = (LPCSTR)(Runtime::InteropServices::Marshal::StringToHGlobalAnsi(rawPacket).ToPointer());
+	const LPCSTR lpcszPacket = static_cast<LPCSTR>(Runtime::InteropServices::Marshal::StringToHGlobalAnsi(rawPacket).ToPointer());
 
 	Packet.Size = strlen(lpcszPacket) / 2;
 	Packet.lpvData = atohx(tmpPacketStr, lpcszPacket);

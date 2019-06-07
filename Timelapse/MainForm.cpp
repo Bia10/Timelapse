@@ -9,6 +9,8 @@
 #include "Settings.h"
 #include "Log.h"
 #include "Assembly.h"
+#include "MapleLib/stat_objects.hpp"
+#include "Benchmark.hpp"
 
 using namespace Timelapse;
 
@@ -40,7 +42,7 @@ ref struct GlobalRefs {
 	static Point dragOffset;
 	static HWND hParent; 
 	static double formOpacity;
-	static Generic::List<MapData^>^ maps;
+	static List<MapData^>^ maps;
 };
 
 #pragma region General Form
@@ -59,7 +61,7 @@ BOOL WINAPI DllMain(HMODULE hModule, DWORD dwReason, PVOID lpvReserved) {
 	switch (dwReason) {
 		case DLL_PROCESS_ATTACH:
 			//GlobalVars::hDLL = hModule;
-			CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)&Main, nullptr, 0, nullptr);
+			CreateThread(nullptr, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(&Main), nullptr, 0, nullptr);
 			break;
 		case DLL_PROCESS_DETACH:
 			FreeLibraryAndExitThread(hModule, 0);
@@ -275,6 +277,7 @@ void MainForm::lbWorld_MouseHover(Object^  sender, EventArgs^  e) {
 	worldToolTip->SetToolTip(lbWorld, ReadPointer(ServerBase, OFS_World).ToString());
 }
 
+MouseInput::Mouse newMouse;
 //Timer that ticks every 200ms and updates every label
 void MainForm::GUITimer_Tick(Object^  sender, EventArgs^  e) {
 	lbThreadID->Text = "0x" + GetMSThreadID().ToString("X");
@@ -294,6 +297,26 @@ void MainForm::GUITimer_Tick(Object^  sender, EventArgs^  e) {
 		lbCharName->Text = PointerFuncs::getCharName();
 		lbLevel->Text = PointerFuncs::getCharLevel();
 		lbJob->Text = PointerFuncs::getCharJob();
+
+		lbAP->Text = PointerFuncs::getCharAp();
+		lbSP->Text = PointerFuncs::getCharSP();
+		lbSTR->Text = PointerFuncs::getCharStr();
+		lbDEX->Text = PointerFuncs::getCharDex();
+		lbINT->Text = PointerFuncs::getCharInt();
+		lbLUK->Text = PointerFuncs::getCharLuk();
+
+		//Log::WriteLineToConsole("Current Gender:  " + PointerFuncs::getCharGender());
+		//Log::WriteLineToConsole("Current Skin:  " + PointerFuncs::getCharSkin());
+		//Log::WriteLineToConsole("Current Face:  " + PointerFuncs::getCharFace());
+		//Log::WriteLineToConsole("Current Hair:  " + PointerFuncs::getCharHair());
+		//Log::WriteLineToConsole("Current CurHP:  " + PointerFuncs::getCharCurHPnew()); // current HP
+		//Log::WriteLineToConsole("Current MaxHP:  " + PointerFuncs::getCharMaxHPnew());
+		//Log::WriteLineToConsole("Current CurMP:  " + PointerFuncs::getCharCurMPnew()); // CURRENT MP
+		//Log::WriteLineToConsole("Current MaxMp:  " + PointerFuncs::getCharMaxMPnew()); // MAX MP
+		//Log::WriteLineToConsole("Current CurXP:   " + PointerFuncs::getCharCurXP());
+		//Log::WriteLineToConsole("Current POP?:   " + PointerFuncs::getCharPop()); // causes crash not properly read
+		//Log::WriteLineToConsole("Current TempXP?:   " + PointerFuncs::getCharTempXP());
+
 		lbHP->Text = PointerFuncs::getCharHP();
 		lbMP->Text = PointerFuncs::getCharMP();
 		lbEXP->Text = PointerFuncs::getCharEXP();
@@ -308,13 +331,15 @@ void MainForm::GUITimer_Tick(Object^  sender, EventArgs^  e) {
 		lbCharAnimation->Text = PointerFuncs::getCharAnimation();
 		lbCharPos->Text = PointerFuncs::getCharPos();
 		lbMousePos->Text = PointerFuncs::getMousePos();
+		lbMousePosAbs->Text = newMouse.getMousePositionStr();
+		lbMouseAnim->Text = PointerFuncs::getMouseAnimation().ToString();
 
 		lbAttackCount->Text = PointerFuncs::getAttackCount();
 		lbBuffCount->Text = PointerFuncs::getBuffCount();
 		lbBreathCount->Text = PointerFuncs::getBreathCount();
 		lbPeopleCount->Text = PointerFuncs::getPeopleCount();
 		lbMobCount->Text = PointerFuncs::getMobCount();
-		lbItemCount->Text = PointerFuncs::getItemCount();
+		lbItemCount->Text = PointerFuncs::getDropCount();
 		lbPortalCount->Text = PointerFuncs::getPortalCount();
 		lbNPCCount->Text = PointerFuncs::getNPCCount();
 	}
@@ -523,7 +548,12 @@ void MainForm::tbAttackInterval_KeyPress(Object^  sender, Windows::Forms::KeyPre
 
 void MainForm::tAutoAttack_Tick(Object^ sender, EventArgs^ e) {
 	if (HelperFuncs::ValidToAttack()) {
-		KeyMacro::SpamPressKey(keyCollection[this->comboAttackKey->SelectedIndex], 2);
+		const int mobCntAttLimit = Convert::ToUInt32(TheInstance->tbAttackMob->Text);
+		const int mobCntCurrent = Convert::ToUInt32(PointerFuncs::getMobCount());
+
+		if (mobCntCurrent > mobCntAttLimit) {
+			KeyMacro::SpamPressKey(keyCollection[this->comboAttackKey->SelectedIndex], 2);
+		}
 	}
 }
 
@@ -573,7 +603,12 @@ void MainForm::tbLootInterval_KeyPress(Object^  sender, Windows::Forms::KeyPress
 
 void MainForm::tAutoLoot_Tick(System::Object^  sender, System::EventArgs^  e) {
 	if (HelperFuncs::ValidToLoot()) {
-		KeyMacro::SpamPressKey(keyCollection[this->comboLootKey->SelectedIndex], 2);
+		const int itemCntLootLimit = Convert::ToUInt32(TheInstance->tbLootItem->Text);
+		const int itemCntCurrent = Convert::ToUInt32(PointerFuncs::getDropCount());
+		
+		if (itemCntCurrent > itemCntLootLimit) {
+			KeyMacro::SpamPressKey(keyCollection[this->comboLootKey->SelectedIndex], 3);
+		}
 	}
 }
 
@@ -679,11 +714,24 @@ void _stdcall AutoCC(int toChannel) {
 	// parse string by comma into excludedChanList
 	//String firstchar = excludedChannelsText[1];
 
-	if (toChannel == -1) channel = rand() % 19;
-	else channel = toChannel;
+	if (toChannel == -1) 
+		channel = rand() % 19;
+	else 
+		channel = toChannel;
 
-	if (MainForm::TheInstance->rbPacket->Checked) 
-		SendPacket(gcnew String("27 00 " + channel.ToString("X2") + " ** ** ** 00")); //Send Auto CC Packet
+	String^ ccPacket;
+	array<BYTE>^ ccHeader = gcnew array<BYTE> { 0x27,0x00 };
+
+	writeBytes(ccPacket, ccHeader);
+	writeByte(ccPacket, Convert::ToByte(channel));
+	ccPacket += " ** ** "; // TimeStamp
+	ccPacket += " ** ";	   // Tick?
+	writeByte(ccPacket, 0x00);
+
+	if (MainForm::TheInstance->rbPacket->Checked) {
+		Log::WriteLineToConsole("Sending ccPacket: " + ccPacket);
+		SendPacket(ccPacket);
+	}
 	else
 		CallCCFunc(channel); //Call Auto CC Function
 }
@@ -732,7 +780,7 @@ void MainForm::AutoCCCSTimer_Tick(Object^  sender, EventArgs^  e) {
 	}
 
 	if (cbCCCSPeople->Checked) {
-		if (ReadPointer(UserPoolBase, OFS_PeopleCount) > Convert::ToUInt32(tbCCCSPeople->Text)) {
+		if (ReadPointer(UserPoolBase, OFS_mUserRemote_uCount) > Convert::ToUInt32(tbCCCSPeople->Text)) {
 			if (rbCC->Checked) AutoCC(-1);
 			else AutoCS();
 		}
@@ -746,7 +794,7 @@ void MainForm::AutoCCCSTimer_Tick(Object^  sender, EventArgs^  e) {
 	}
 
 	if (cbCCCSMob->Checked) {
-		if (ReadPointer(MobPoolBase, OFS_MobCount) < Convert::ToUInt32(tbCCCSMob->Text)) {
+		if (ReadPointer(MobPoolBase, OFS_mMob_uCount) < Convert::ToUInt32(tbCCCSMob->Text)) {
 			if (rbCC->Checked) AutoCC(-1);
 			else AutoCS();
 		}
@@ -805,38 +853,39 @@ void MainForm::tbCSDelay_KeyPress(Object^  sender, Windows::Forms::KeyPressEvent
 }
 #pragma endregion 
 
-#pragma region Auto Sell Tab
-void MainForm::cbSellAll_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
-	if (this->cbSellAll->Checked) {
-		//if (HelperFuncs::IsInventoryFull()) {
-			//deactivate hacks and macro
-			if (this->cbZzVac->Checked)
-				cbZzVac->Checked = false;
-			if (this->cbKami->Checked)
-				cbKami->Checked = false;
-			if (this->cbVacLeft->Checked)
-				cbVacLeft->Checked = false;
-			if (this->cbVacRight->Checked)
-				cbVacRight->Checked = false;
+static void SendAPPacket(int type) {
+	String^ packet = "";
+	array<BYTE>^ header = gcnew array<BYTE>{0x57, 0x00}; //Add AP opcode
+	array<BYTE>^ HP = gcnew array<BYTE>{0x00, 0x08}; //HP
+	array<BYTE>^ MP = gcnew array<BYTE>{0x20, 0x00}; //MP
+	array<BYTE>^ STR = gcnew array<BYTE>{0x40, 0x00}; //STR
+	array<BYTE>^ DEX = gcnew array<BYTE>{0x80, 0x00}; //DEX
+	array<BYTE>^ INT = gcnew array<BYTE>{0x00, 0x01}; //INT
+	array<BYTE>^ LUK = gcnew array<BYTE>{0x00, 0x02}; //LUK
+	array<BYTE>^ unknown = gcnew array<BYTE>{0x00, 0x00}; //???
 
-			MacrosEnabled::bMacroLoot = false;
-			MacrosEnabled::bMacroAttack = false;
-			MacrosEnabled::bMacroHP = false;
-			MacrosEnabled::bMacroMP = false;
-			// TODO: rush to mapID	   
-			SellAtEquipMapId(220050300); //TESTING autosell at lubridum path of time
-			// TODO: reverse rushpath back
-		    // activate hack and begin again
-		//}
-	}
-	else {
-		MacrosEnabled::bMacroLoot = true;
-		MacrosEnabled::bMacroAttack = true;
-		MacrosEnabled::bMacroHP = true;
-		MacrosEnabled::bMacroMP = true;
-	}
+	writeBytes(packet, header); 
+	packet += " ** ** "; // TimeStamp
+	packet += " ** ** "; // Tick?
+	switch (type) {
+	case 1: writeBytes(packet, HP); //HP
+		break;
+	case 2: writeBytes(packet, MP); //MP
+		break;
+	case 3: writeBytes(packet, STR); //STR
+		break;
+	case 4: writeBytes(packet, DEX); //DEX
+		break;
+	case 5: writeBytes(packet, INT); //INT
+		break;
+	case 6: writeBytes(packet, LUK); //LUK
+		break;
+	default:; }
+	writeBytes(packet, unknown);
+
+	Log::WriteLineToConsole("APPacket: " + packet);
+	SendPacket(packet);
 }
-#pragma endregion
 #pragma endregion
 
 #pragma region Hacks I Tab
@@ -868,8 +917,10 @@ void MainForm::cbBlinkGodmode_CheckedChanged(Object^  sender, EventArgs^  e) {
 
 void ClickTeleport() {
 	while (GlobalRefs::bClickTeleport) {
-		if (ReadPointer(InputBase, OFS_MouseAnimation) == 12)
-			Teleport(ReadMultiPointerSigned(InputBase, 2, OFS_MouseLocation, OFS_MouseX), ReadMultiPointerSigned(InputBase, 2, OFS_MouseLocation, OFS_MouseY));
+		if (PointerFuncs::getMouseAnimation() == 12)
+			Teleport(ReadMultiPointerSigned(InputBase, 2, OFS_MouseLocation, OFS_MouseX), 
+					 ReadMultiPointerSigned(InputBase, 2, OFS_MouseLocation, OFS_MouseY));
+
 		Sleep(Convert::ToUInt32(MainForm::TheInstance->tbClickTeleport->Text));
 	}
 	ExitThread(0);
@@ -877,8 +928,10 @@ void ClickTeleport() {
 
 void MouseTeleport() {
 	while (GlobalRefs::bMouseTeleport) {
-		if (ReadPointer(InputBase, OFS_MouseAnimation) == 00)
-			Teleport(ReadMultiPointerSigned(InputBase, 2, OFS_MouseLocation, OFS_MouseX), ReadMultiPointerSigned(InputBase, 2, OFS_MouseLocation, OFS_MouseY));
+		if (PointerFuncs::getMouseAnimation() == 00)
+			Teleport(ReadMultiPointerSigned(InputBase, 2, OFS_MouseLocation, OFS_MouseX), 
+					 ReadMultiPointerSigned(InputBase, 2, OFS_MouseLocation, OFS_MouseY));
+
 		Sleep(Convert::ToUInt32(MainForm::TheInstance->tbMouseTeleport->Text));
 	}
 	ExitThread(0);
@@ -887,7 +940,10 @@ void MouseTeleport() {
 void MainForm::cbClickTeleport_CheckedChanged(Object^  sender, EventArgs^  e) {
 	if (this->cbClickTeleport->Checked) {
 		GlobalRefs::bClickTeleport = true;
-		NewThread(ClickTeleport);
+		try {
+			NewThread(ClickTeleport);
+		}
+		catch (...){}
 	}
 	else
 		GlobalRefs::bClickTeleport = false;
@@ -1356,12 +1412,12 @@ void MainForm::tbSpawnControlY_KeyPress(Object^  sender, Windows::Forms::KeyPres
 void KamiLoop() {
 	while (GlobalRefs::bKami || GlobalRefs::bKamiLoot) {
 		if (GlobalRefs::bKami && GlobalRefs::bKamiLoot) {
-			if(ReadPointer(DropPoolBase, OFS_ItemCount) > Convert::ToUInt32(MainForm::TheInstance->tbKamiLootItem->Text)) {
+			if(ReadPointer(DropPoolBase, OFS_mDropPoint_uCount) > Convert::ToUInt32(MainForm::TheInstance->tbKamiLootItem->Text)) {
 				if (!GlobalRefs::isChangingField && !GlobalRefs::isMapRushing) {}
 					Teleport(Assembly::ItemX, Assembly::ItemY + 10);
 				Sleep(Convert::ToUInt32(MainForm::TheInstance->tbKamiLootInterval->Text));
 			}
-			else if (ReadPointer(MobPoolBase, OFS_MobCount) > Convert::ToUInt32(MainForm::TheInstance->tbKamiMob->Text)) {
+			else if (ReadPointer(MobPoolBase, OFS_mMob_uCount) > Convert::ToUInt32(MainForm::TheInstance->tbKamiMob->Text)) {
 				POINT telePoint;
 				telePoint.x = ReadMultiPointerSigned(MobPoolBase, 5, OFS_Mob1, OFS_Mob2, OFS_Mob3, OFS_Mob4, OFS_MobX) - Convert::ToInt32(MainForm::TheInstance->tbKamiX->Text);
 				telePoint.y = ReadMultiPointerSigned(MobPoolBase, 5, OFS_Mob1, OFS_Mob2, OFS_Mob3, OFS_Mob4, OFS_MobY) - Convert::ToInt32(MainForm::TheInstance->tbKamiY->Text);
@@ -1373,7 +1429,7 @@ void KamiLoop() {
 			}
 		}
 		else if (GlobalRefs::bKami) {
-			if(ReadPointer(MobPoolBase, OFS_MobCount) > Convert::ToUInt32(MainForm::TheInstance->tbKamiMob->Text)) {
+			if(ReadPointer(MobPoolBase, OFS_mMob_uCount) > Convert::ToUInt32(MainForm::TheInstance->tbKamiMob->Text)) {
 				POINT telePoint;
 				telePoint.x = ReadMultiPointerSigned(MobPoolBase, 5, OFS_Mob1, OFS_Mob2, OFS_Mob3, OFS_Mob4, OFS_MobX) - Convert::ToInt32(MainForm::TheInstance->tbKamiX->Text);
 				telePoint.y = ReadMultiPointerSigned(MobPoolBase, 5, OFS_Mob1, OFS_Mob2, OFS_Mob3, OFS_Mob4, OFS_MobY) - Convert::ToInt32(MainForm::TheInstance->tbKamiY->Text);
@@ -1384,7 +1440,7 @@ void KamiLoop() {
 			Sleep(Convert::ToUInt32(MainForm::TheInstance->tbKamiInterval->Text));
 		}
 		else if (GlobalRefs::bKamiLoot) {
-			if (ReadPointer(DropPoolBase, OFS_ItemCount) > Convert::ToUInt32(MainForm::TheInstance->tbKamiLootItem->Text)) {
+			if (ReadPointer(DropPoolBase, OFS_mDropPoint_uCount) > Convert::ToUInt32(MainForm::TheInstance->tbKamiLootItem->Text)) {
 				if (!GlobalRefs::isChangingField && !GlobalRefs::isMapRushing) {}
 					Teleport(Assembly::ItemX, Assembly::ItemY+10); //MessageBox::Show("ItemX: " + Assembly::ItemX.ToString() + " ItemY: " + Assembly::ItemY.ToString());
 			}
@@ -1468,15 +1524,15 @@ void WallVacLoop() {
 
 	while (GlobalRefs::bWallVac) {
 		//Set X Walls
-		WritePointer(CWvsPhysicalSpace2DBase, OFS_LeftWall, vacXPos - rangeX);
+		WritePointer(CWvsPhysicalSpace2DBase, OFS_rcMBR_left, vacXPos - rangeX);
 		Sleep(50);
-		WritePointer(CWvsPhysicalSpace2DBase, OFS_RightWall, vacXPos + rangeX);
+		WritePointer(CWvsPhysicalSpace2DBase, OFS_rcMBR_right, vacXPos + rangeX);
 		Sleep(50);
 
 		//Set Y Walls
-		WritePointer(CWvsPhysicalSpace2DBase, OFS_TopWall, vacYPos - rangeY);
+		WritePointer(CWvsPhysicalSpace2DBase, OFS_rcMBR_top, vacYPos - rangeY);
 		Sleep(50);
-		WritePointer(CWvsPhysicalSpace2DBase, OFS_BottomWall, vacYPos + rangeY);
+		WritePointer(CWvsPhysicalSpace2DBase, OFS_rcMBR_bottom, vacYPos + rangeY);
 		Sleep(50);
 
 		Sleep(500); //Every half a second, re-write pointer to set wall values TODO: Allow users to enter a delay
@@ -1582,7 +1638,6 @@ dupeXRunFlag = 0;
 
  */
 
-
 void MainForm::tbDupeXMob_KeyPress(Object^  sender, Windows::Forms::KeyPressEventArgs^  e) {
 	if (!isKeyValid(sender, e, false)) e->Handled = true; //If key is not valid, do nothing and indicate that it has been handled
 }
@@ -1615,7 +1670,6 @@ void UEMILoop() {
 	}
 	ExitThread(0);
 }
-
 
 void MainForm::cbUEMI_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
 	if(this->cbUEMI->Checked) {
@@ -1708,11 +1762,17 @@ void MainForm::cbVacJumpLeft_CheckedChanged(System::Object^  sender, System::Eve
 static void findItemsStartingWithStr(String^ str) {
 	try {
 		if (String::IsNullOrEmpty(str)) return;
-		std::string tmpStr = "", itemID = "", itemStr = ConvertSystemToStdStr(str); //TODO
+		std::string tmpStr = "";
+		std::string itemID = "";
+	
+		const std::string itemStr = ConvertSystemToStdStr(str); // TODO
+
 		HRSRC hRes = FindResource(GlobalVars::hDLL, MAKEINTRESOURCE(ItemsList), _T("TEXT"));
 		if (hRes == nullptr) return;
-		HGLOBAL hGlob = LoadResource(GlobalVars::hDLL, hRes);
+
+		const HGLOBAL hGlob = LoadResource(GlobalVars::hDLL, hRes);
 		if (hGlob == nullptr) return;
+
 		const CHAR* pData = reinterpret_cast<const CHAR*>(::LockResource(hGlob));
 		std::istringstream File(pData);
 
@@ -1777,14 +1837,16 @@ void MainForm::cbItemFilterLog_CheckedChanged(System::Object^  sender, System::E
 //Add item to Item Filter ListBox
 void MainForm::bItemFilterAdd_Click(System::Object^  sender, System::EventArgs^  e) {
 	if(tbItemFilterID->TextLength > 0) {
-		try {
+		try {	
 			UINT itemID = Convert::ToUInt32(tbItemFilterID->Text);
+			String^ itemIDstr = itemID.ToString();
 			String^ item = Assembly::findItemNameFromID(itemID);
 
-			if(itemID > 0 && !lbItemFilter->Items->Contains(item + " (" + itemID.ToString() + ")")) {
-				lbItemFilter->Items->Add(item + " (" + itemID.ToString() + ")");
+			if(itemID > 0 && !lbItemFilter->Items->Contains(item + " (" + itemIDstr + ")")) {
+				lbItemFilter->Items->Add(item + " (" + itemIDstr + ")");
 				tbItemFilterID->Text = "";
 				lbItemFilter->SelectedIndex = -1;
+
 				Assembly::itemList->push_back(itemID);
 			}
 		}
@@ -1796,7 +1858,8 @@ void MainForm::bItemFilterAdd_Click(System::Object^  sender, System::EventArgs^ 
 void MainForm::lbItemFilter_MouseDoubleClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
 	if(lbItemFilter->SelectedItem != nullptr) {
 		String ^itemStr = lbItemFilter->GetItemText(lbItemFilter->SelectedItem);
-		int startIndex = itemStr->IndexOf('(') + 1, endIndex = itemStr->IndexOf(')');
+		const int startIndex = itemStr->IndexOf('(') + 1;
+		const int endIndex = itemStr->IndexOf(')');
 
 		String^ itemIDStr = itemStr->Substring(startIndex, endIndex - startIndex);
 		Assembly::itemList->erase(std::find(Assembly::itemList->begin(), Assembly::itemList->end(), Convert::ToUInt32(itemIDStr)));
@@ -1810,7 +1873,8 @@ void MainForm::lbItemFilter_MouseDoubleClick(System::Object^  sender, System::Wi
 void MainForm::lbItemSearchLog_MouseDoubleClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
 	if(lbItemSearchLog->SelectedItem != nullptr && lbItemSearchLog->SelectedItem->ToString()->Length > 0) {
 		String ^itemStr = lbItemSearchLog->GetItemText(lbItemSearchLog->SelectedItem);
-		int startIndex = itemStr->IndexOf('(')+1, endIndex = itemStr->IndexOf(')');
+		const int startIndex = itemStr->IndexOf('(')+1;
+		const int endIndex = itemStr->IndexOf(')');
 
 		String^ itemIDStr = itemStr->Substring(startIndex, endIndex - startIndex);
 		Assembly::itemList->push_back(Convert::ToUInt32(itemIDStr));
@@ -1829,13 +1893,14 @@ void MainForm::bItemSearchLogClear_Click(System::Object^  sender, System::EventA
 //Find items in ItemsList resource with names starting with text entered so far
 void MainForm::tbItemFilterSearch_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 	lbItemSearchLog->Items->Clear();
+	if (tbItemFilterSearch->Text->Length < 3) return;
 	findItemsStartingWithStr(tbItemFilterSearch->Text);
 }
 
 //Changes limit for Mesos (Range: 0<=limit<=50000)
 void MainForm::tbItemFilterMesos_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 	if (!String::IsNullOrEmpty(tbItemFilterMesos->Text)) {
-		ULONG mesosLimit = Convert::ToUInt32(tbItemFilterMesos->Text);
+		const ULONG mesosLimit = Convert::ToUInt32(tbItemFilterMesos->Text);
 		if (mesosLimit >= 0 && mesosLimit <= 50000)
 			Assembly::itemFilterMesos = mesosLimit;
 	}
@@ -2066,42 +2131,81 @@ void MainForm::comboInUseSlot_TextChanged(System::Object^  sender, System::Event
 	useSlotG = useSlot;
 }
 
-String^ CreateRtrnScrollPacket(int scrollId, int useSlot) {
-	String^ rtrnPacket = "";
-	String^ slotStr;
-	if (useSlotG < 99) slotStr = useSlotG.ToString();		
-	else slotStr = useSlotG.ToString("X");
- 
-	// TODO: IDtoHex then reverse order // B0 F9 1E = 2030000
-	switch (scrollId) {
-	case 2030000: // L"Nearest"
-		rtrnPacket = "55 00 * * * 3A XX 00 B0 F9 1E 00"; 
-		break;
-	case 2030001: //L"LithHarbor"
-		break;
-	case 2030002: //L"Ellinia"
-		break;
-	case 2030003: //L"Perion"
-		break;
-	case 2030004: //L"Henesys"	
-		break;
-	case 2030005: //L"KerningCity"
-		break;
-	case 2030006: //L"Sleepywood"
-		break;
-	case 2030007: //L"DeadMine"
-		break;
-	default:
-		Log::WriteLineToConsole("CreateRtrnScrollPacket:: ERROR unknown scrollId!");
-	}
-	rtrnPacket->Replace("XX", slotStr);
-	Log::WriteLineToConsole("Sending RTRN packet: " + rtrnPacket);
+static void SendRtrnScrollPacket() {
+	String^ packet = "";
+	array<BYTE>^ header = gcnew array<BYTE>{0x55, 0x00}; // opcode
+	BYTE slot = Convert::ToByte(useSlotG);
 
-	return rtrnPacket;
+	if (slot == 00) slot = 01; // TODO fix this
+
+	writeBytes(packet, header);
+	packet += " ** ** "; // TimeStamp
+	packet += " ** ** "; // Tick?
+	writeByte(packet, slot);
+	writeByte(packet, 0x00);
+	writeInt(packet, scrollId);
+
+	Log::WriteLineToConsole("RtrnPacket: " + packet);
+	SendPacket(packet);
 }
 
+#pragma region Auto Sell Tab
+void MainForm::cbSellAll_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
+	if (this->cbSellAll->Checked && HelperFuncs::IsInventoryFull()) {
+			//deactivate hacks and macro
+		if (this->cbZzVac->Checked)
+			cbZzVac->Checked = false;
+		if (this->cbKami->Checked)
+			cbKami->Checked = false;
+		if (this->cbVacLeft->Checked || this->cbVacJumpLeft->Checked)
+			cbVacLeft->Checked = false;
+			cbVacJumpLeft->Checked = false;
+		if (this->cbVacRight->Checked || this->cbVacJumpRight->Checked)
+			cbVacRight->Checked = false;
+			cbVacJumpRight->Checked = false;
+
+		MacrosEnabled::bMacroLoot = false;
+		this->tAutoLoot->Enabled = false;
+		MacrosEnabled::bMacroAttack = false;
+		this->tAutoAttack->Enabled = false;
+		MacrosEnabled::bMacroHP = false;
+		MacrosEnabled::bMacroMP = false;
+
+		const int64 startTime = GetTimeMs64();
+		Log::WriteLineToConsole("Auto Sell StartTime: " + startTime);
+
+		RushToSellFromTerraceHall(true, false);
+		/*const std::unordered_map<std::string, int> USEITEMS = InitializeUseItems();
+		const int64 startTime = GetTimeMs64();
+		Log::WriteLineToConsole("StartTime: " + startTime);
+		FindItemInMap("Chief Oblivion Guardian Card", USEITEMS);
+		const int NUM_TIMES = 1; // Choose this so it takes at the very least half a minute to run
+		for (int i = 0; i < NUM_TIMES; ++i) {
+		}*/
+		double milliseconds = (GetTimeMs64() - startTime) / static_cast<double>(1);
+		Log::WriteLineToConsole("Auto Sell Total Time Elapsed: " + milliseconds.ToString() + "ms");
+
+		//if (HelperFuncs::IsInventoryFull()) RushToSellFromTerraceHall(false);
+		//SellAllAtEquipMapId(ReadPointer(UIMiniMapBase, m_dwFieldID));
+		//SendRtrnScrollPacket();
+		//Hook_GW_CharacterStat__DecodeChangeStat(true);
+		//TODO: rush to mapID	   
+		//SellAtEquipMapId(220050300); //TESTING autosell at lubridum path of time
+		//TODO: reverse rushpath back
+		//activate hack and begin again
+	//}
+	}
+	else {
+		MacrosEnabled::bMacroLoot = true;
+		MacrosEnabled::bMacroAttack = true;
+		MacrosEnabled::bMacroHP = true;
+		MacrosEnabled::bMacroMP = true;
+	}
+}
+#pragma endregion
+
 void MainForm::bUseRtrnScroll_Click(System::Object^  sender, System::EventArgs^  e) {	
-	SendPacket(CreateRtrnScrollPacket(scrollId, useSlotG));
+	SendRtrnScrollPacket();
 }
 
 void MainForm::bSendSuicide_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -2138,49 +2242,119 @@ void MainForm::bSendRestore127Health_Click(System::Object^  sender, System::Even
 #pragma endregion
 
 #pragma region AutoAP
+int APmaxLVL = 0;
+int APhp = 0;
+int APmp = 0;
+int APstr = 0;
+int APdex = 0;
+int APint = 0;
+int APluk = 0;
+
 void MainForm::tbAPLevel_KeyPress(Object^  sender, Windows::Forms::KeyPressEventArgs^  e) {
 	if (!isKeyValid(sender, e, false)) e->Handled = true; //If key is not valid, do nothing and indicate that it has been handled
 }
 void MainForm::tbAPLevel_TextChanged(System::Object^ sender, System::EventArgs^ e){
+	if (String::IsNullOrWhiteSpace(this->tbAPLevel->Text)) return;
+	APmaxLVL = Convert::ToInt32(this->tbAPLevel->Text);
 }
 
 void MainForm::tbAPHP_KeyPress(Object^  sender, Windows::Forms::KeyPressEventArgs^  e) {
 	if (!isKeyValid(sender, e, false)) e->Handled = true; //If key is not valid, do nothing and indicate that it has been handled
 }
 void MainForm::tbAPHP_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	if (String::IsNullOrWhiteSpace(this->tbAPHP->Text)) return;
+	APhp = Convert::ToInt32(this->tbAPHP->Text);
 }
 
 void MainForm::tbAPMP_KeyPress(Object^  sender, Windows::Forms::KeyPressEventArgs^  e) {
 	if (!isKeyValid(sender, e, false)) e->Handled = true; //If key is not valid, do nothing and indicate that it has been handled
 }
 void MainForm::tbAPMP_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	if (String::IsNullOrWhiteSpace(this->tbAPMP->Text)) return;
+	APmp = Convert::ToInt32(this->tbAPMP->Text);
 }
 
 void MainForm::tbAPSTR_KeyPress(Object^  sender, Windows::Forms::KeyPressEventArgs^  e) {
 	if (!isKeyValid(sender, e, false)) e->Handled = true; //If key is not valid, do nothing and indicate that it has been handled
 }
 void MainForm::tbAPSTR_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	if (String::IsNullOrWhiteSpace(this->tbAPSTR->Text)) return;
+	APstr = Convert::ToInt32(this->tbAPSTR->Text);
 }
 
 void MainForm::tbAPDEX_KeyPress(Object^  sender, Windows::Forms::KeyPressEventArgs^  e) {
 	if (!isKeyValid(sender, e, false)) e->Handled = true; //If key is not valid, do nothing and indicate that it has been handled
 }
 void MainForm::tbAPDEX_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	if (String::IsNullOrWhiteSpace(this->tbAPDEX->Text)) return;
+	APdex = Convert::ToInt32(this->tbAPDEX->Text);
 }
 
 void MainForm::tbAPINT_KeyPress(Object^  sender, Windows::Forms::KeyPressEventArgs^  e) {
 	if (!isKeyValid(sender, e, false)) e->Handled = true; //If key is not valid, do nothing and indicate that it has been handled
 }
 void MainForm::tbAPINT_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	if (String::IsNullOrWhiteSpace(this->tbAPINT->Text)) return;
+	APint = Convert::ToInt32(this->tbAPINT->Text);
 }
 
 void MainForm::tbAPLUK_KeyPress(Object^  sender, Windows::Forms::KeyPressEventArgs^  e) {
 	if (!isKeyValid(sender, e, false)) e->Handled = true; //If key is not valid, do nothing and indicate that it has been handled
 }
 void MainForm::tbAPLUK_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	if (String::IsNullOrWhiteSpace(this->tbAPLUK->Text)) return;
+	APluk = Convert::ToInt32(this->tbAPLUK->Text);
 }
 
-System::Void MainForm::cbAP_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+static void DistributeAP() {
+	if (Convert::ToInt32(PointerFuncs::getCharLevel()) >= APmaxLVL) return;
+	if (Convert::ToInt32(PointerFuncs::getCharAp()) <= 0) return;
+	Random^ rndObj = gcnew Random();
+
+	if (APhp > 0) {
+		for (int h = 0; h < APhp; h++) {
+			SendAPPacket(1);
+			Sleep(rndObj->Next(80, 340));
+		}
+	}
+	else if (APmp > 0) {
+		for (int m = 0; m < APmp; m++) {
+			SendAPPacket(2);
+			Sleep(rndObj->Next(80, 340));
+		}
+	}
+	else if (APstr > 0) {
+		for (int s = 0; s < APstr; s++) {
+			SendAPPacket(3);
+			Sleep(rndObj->Next(80, 340));
+		}
+	}
+	else if (APdex > 0) {
+		for (int d = 0; d < APdex; d++) {
+			SendAPPacket(4);
+			Sleep(rndObj->Next(80, 340));
+		}
+	}
+	else if (APint > 0) {
+		for (int i = 0; i < APint; i++) {
+			SendAPPacket(5);
+			Sleep(rndObj->Next(80, 340));
+		}
+	}
+	else if (APluk > 0) {
+		for (int l = 0; l < APluk; l++) {
+			SendAPPacket(6);
+			Sleep(rndObj->Next(80, 340));
+		}
+	}
+}
+
+void MainForm::cbAP_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+	if(this->cbAP->Checked) DistributeAP();
+}
+
+void MainForm::AutoAPTimer_Tick(System::Object^  sender, System::EventArgs^  e) {
+	if (this->cbAP->Checked) DistributeAP();
 }
 #pragma endregion
 #pragma endregion
@@ -2492,7 +2666,7 @@ void toggleFastMapRushHacks(bool isChecked) {
 //Map Rush
 static void mapRush(int destMapID) {
 	GlobalRefs::isMapRushing = true;
-	int startMapID = ReadPointer(UIMiniMapBase, OFS_MapID);
+	int startMapID = ReadPointer(UIMiniMapBase, m_dwFieldID);
 	if (startMapID == destMapID) {
 		MainForm::TheInstance->lbMapRusherStatus->Text = "Status: Cannot Map Rush to same map";
 		GlobalRefs::isMapRushing = false;
@@ -2579,7 +2753,7 @@ static void mapRush(int destMapID) {
 		//Check to see if next map is loaded, try max 20 attempts
 		for(int n = 0; n < 50; n++) {
 			Sleep(25);
-			if (ReadPointer(UIMiniMapBase, OFS_MapID) != mapData->mapID) break;
+			if (ReadPointer(UIMiniMapBase, m_dwFieldID) != mapData->mapID) break;
 			if (n % 5 == 0) SendPacket(packet);
 			if (n == 20) Teleport(mapData->portal->xPos, mapData->portal->yPos - 20);
 		}
@@ -2593,7 +2767,7 @@ static void mapRush(int destMapID) {
 	AutoCC(oldChannel); //CC back to original channel
 	Sleep(delay);
 
-	if (ReadPointer(UIMiniMapBase, OFS_MapID) != destMapID) 
+	if (ReadPointer(UIMiniMapBase, m_dwFieldID) != destMapID)
 		MainForm::TheInstance->lbMapRusherStatus->Text = "Status: An error has occurred, try setting delay higher";
 	else 
 		MainForm::TheInstance->lbMapRusherStatus->Text = "Status: Map Rushing Complete";
@@ -2666,8 +2840,6 @@ void MainForm::lbMapRusherStatus_TextChanged(System::Object^  sender, System::Ev
 
 //Remove at the end, but for now use it to test stuff out (test button on main form)
 #pragma region testing
-
-
 
 void Timelapse::MainForm::bTestButton_Click(System::Object^  sender, System::EventArgs^  e) {
 	

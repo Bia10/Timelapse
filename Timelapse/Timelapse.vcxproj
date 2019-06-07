@@ -97,6 +97,7 @@
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>
       </EntryPointSymbol>
+      <AdditionalLibraryDirectories>C:\Users\Bia\source\repos\Timelapse2\Timelapse\MapleLib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -111,15 +112,17 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>C:\Users\Bia\source\repos\Detours\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies />
       <EntryPointSymbol>
       </EntryPointSymbol>
       <SubSystem>Windows</SubSystem>
+      <AdditionalLibraryDirectories>C:\Users\Bia\source\repos\Detours\lib.X86;C:\Users\Bia\Downloads\Detours-master;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -139,23 +142,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="detours.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="Macro.cpp" />
     <ClCompile Include="MainForm.cpp" />
+    <ClCompile Include="MapleLib\stat_objects.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="Packet.cpp" />
     <ClCompile Include="Settings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Assembly.h" />
+    <ClInclude Include="Benchmark.hpp" />
+    <ClInclude Include="detours.hpp" />
+    <ClInclude Include="drop_objects.hpp" />
     <ClInclude Include="GeneralFunctions.h" />
+    <ClInclude Include="generic_objects.hpp" />
     <ClInclude Include="Inventory.h" />
+    <ClInclude Include="life_objects.hpp" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="Macro.h" />
     <ClInclude Include="MapleFunctions.h" />
+    <ClInclude Include="MapleLib\stat_objects.hpp" />
+    <ClInclude Include="MapleLib\TSecType.hpp" />
+    <ClInclude Include="MapleLib\TSingleton.hpp" />
+    <ClInclude Include="MapleLib\ZArray.hpp" />
+    <ClInclude Include="MapleLib\ZException.hpp" />
+    <ClInclude Include="MapleLib\ZList.hpp" />
+    <ClInclude Include="MapleLib\ZMap.hpp" />
+    <ClInclude Include="MapleLib\ZRef.hpp" />
+    <ClInclude Include="MapleLib\ZRefCounted.hpp" />
+    <ClInclude Include="MapleLib\ZtlSecure.hpp" />
+    <ClInclude Include="MapleLib\ZXString.hpp" />
     <ClInclude Include="Memory.h" />
     <ClInclude Include="Mouse.h" />
+    <ClInclude Include="Native.h" />
     <ClInclude Include="Packet.h" />
     <ClInclude Include="Addresses.h" />
     <ClInclude Include="MainForm.h">
@@ -163,7 +185,9 @@
     </ClInclude>
     <ClInclude Include="resource.h" />
     <ClInclude Include="Settings.h" />
+    <ClInclude Include="space_objects.hpp" />
     <ClInclude Include="Structs.h" />
+    <ClInclude Include="Tuples.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainForm.resx">
@@ -180,7 +204,6 @@
   <ItemGroup>
     <None Include="..\LICENSE" />
     <None Include="..\README.md" />
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
